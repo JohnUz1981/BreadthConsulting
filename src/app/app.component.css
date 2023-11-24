@@ -1,0 +1,22 @@
+.mat-icon {
+    display: flex;
+    transform: scale(2);
+}
+
+.container-fliud {
+    padding-left: 25px;
+}
+
+.container {
+    justify-content: right;
+    list-style-type: none;
+    padding-right: 50px;
+}
+
+.dropdown-toggle {
+    content: none;
+}
+
+.mat-icon {
+    content: none !important;
+}

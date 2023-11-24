@@ -1,0 +1,31 @@
+<div class="container text-center">
+    <form class="example-form">
+        <mat-form-field>
+            <mat-label class="example-full-width">Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint class="example-full-width">MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Client Name</mat-label>
+            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Client Name</mat-label>
+            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Client Name</mat-label>
+            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Advisor Name:</mat-label>
+            <mat-select>
+                @for (advisor of advisor; track advisor) {
+                <mat-option [value]="advisor.value">{{advisor.viewValue}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
