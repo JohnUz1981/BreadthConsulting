@@ -1,7 +1,8 @@
 .container {
-    background-color: #a6ce39;
+    background-color: #e3f2fd;
     margin-top: 50px;
     border-radius: 25px;
+    padding-bottom: 25px;
 }
 
 .example-form {
@@ -20,4 +21,18 @@
 
 td {
     padding-right: 8px;
+}
+
+.example-button-row button,
+.example-button-row a {
+    background-color: #9acb3c;
+
+}
+
+.example-disabled {
+    display: inline-block;
+}
+
+.full-width {
+    width: 100%;
 }

@@ -1,31 +1,64 @@
-<div class="container text-center">
-    <form class="example-form">
-        <mat-form-field>
-            <mat-label class="example-full-width">Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint class="example-full-width">MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Client Name</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Client Name</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Client Name</mat-label>
-            <input matInput placeholder="Ex. Pizza" value="Joe Doe">
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Advisor Name:</mat-label>
-            <mat-select>
-                @for (advisor of advisor; track advisor) {
-                <mat-option [value]="advisor.value">{{advisor.viewValue}}</mat-option>
-                }
-            </mat-select>
-        </mat-form-field>
-    </form>
+<div class="container">
+    <div class="form-page">
+        <div class="row" style="padding-top: 25px">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [formControl]="currentDateTime">
+                    <mat-hint class="example-full-width">MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field>
+                    <mat-label>Advisor Name:</mat-label>
+                    <mat-select>
+                        @for (advisor of advisor; track advisor) {
+                        <mat-option [value]="advisor.value">{{advisor.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Client Name</mat-label>
+                    <input matInput placeholder="Ex. John Doe">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Carrier:</mat-label>
+                    <mat-select>
+                        @for (carrier of carrier; track carrier) {
+                        <mat-option [value]="carrier.value">{{carrier.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Investment Amount:</mat-label>
+                    <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Advisor Name:</mat-label>
+                    <mat-select>
+                        @for (advisor of advisor; track advisor) {
+                        <mat-option [value]="advisor.value">{{advisor.viewValue}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="example-button-row">
+        <button mat-raised-button class="full-width">Submit</button>
+    </div>
 </div>
