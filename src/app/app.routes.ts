@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReasonsWhySegregatedFundComponent } from './reasons-why-segregated-fund/reasons-why-segregated-fund.component';
 
 
+
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'reasons-why-segregated-fund', component: ReasonsWhySegregatedFundComponent }

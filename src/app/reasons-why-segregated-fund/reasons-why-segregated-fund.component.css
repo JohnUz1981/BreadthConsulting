@@ -36,3 +36,12 @@ td {
 .full-width {
     width: 100%;
 }
+
+.titlepage {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-top: 25px;
+
+}
