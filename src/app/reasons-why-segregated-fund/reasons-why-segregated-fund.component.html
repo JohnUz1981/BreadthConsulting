@@ -37,7 +37,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Carrier:</mat-label>
                     <mat-select [(ngModel)]="selectedCarrier" name="selectedCarrier">
-                        <mat-option *ngFor="let carrierInfo of carrierData" [value]="carrierInfo.name">
+                        <mat-option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
                             {{ carrierInfo.name }}
                         </mat-option>
                     </mat-select>
@@ -51,9 +51,53 @@
             </div>
             <div class="col">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Advisor Name:</mat-label>
+                    <mat-label>Maturity Date Guarantee:</mat-label>
                     <mat-select>
-                        <mat-option *ngFor=""></mat-option>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Death Benefit Guarantee:</mat-label>
+                    <mat-select>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sales Charge option chose :</mat-label>
+                    <mat-select>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Percentage :</mat-label>
+                    <mat-select>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Time Horzion:</mat-label>
+                    <mat-select>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Summarized from our discussion, here are the key facts about your situation:</mat-label>
+                    <mat-select>
+                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
                     </mat-select>
                 </mat-form-field>
             </div>

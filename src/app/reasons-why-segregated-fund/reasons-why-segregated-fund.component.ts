@@ -11,6 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import * as jsPDF from 'jspdf';
 import { ServicesService } from '../services/services.service';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 interface Advisor {
   value: string;
@@ -28,6 +31,7 @@ interface User {
 
 
 @Component({
+  providers: [ServicesService],
   selector: 'app-reasons-why-segregated-fund',
   standalone: true,
   imports: [
@@ -43,6 +47,11 @@ interface User {
     ReactiveFormsModule,
     MatButtonModule,
     HttpClientModule,
+    MatCardModule, 
+    MatCheckboxModule, 
+    FormsModule, 
+    MatRadioModule
+    
   ],
   templateUrl: './reasons-why-segregated-fund.component.html',
   styleUrls: ['./reasons-why-segregated-fund.component.css']
@@ -50,33 +59,29 @@ interface User {
 export class ReasonsWhySegregatedFundComponent implements OnInit {
   users: User[] = [];
   selectedUser: string | undefined;
-  carrierData: Carrier[] = [];
-  selectedCarrier: string | undefined;
+  carrier: Carrier[] = [];
+  selectedCarrier: string | undefined; 
+  checked = false;
+  indeterminate = false;
+  disabled = false
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private ServicesService: ServicesService) { }
   currentDate = new Date();
   currentDateTime = new FormControl(this.currentDate);
   currencyControl = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
-    this.http.get<User[]>('../../assets/users.json').subscribe(
-      (data) => {
-        this.users = data;
-        //console.log('Users data:', this.users);
-      },
-      (error) => {
-        console.error('Error fetching users data:', error);
-      }
-    );
-    this.http.get<Carrier[]>('../../assets/carriers.json').subscribe(
-      (carrierdata) => {
-        this.carrierData = carrierdata;
-        //console.log('Carrier data:', this.carrierData);
-      },
-      (error) => {
-        console.error('Error fetching users data:', error);
-      }
-    );
+
+   this.ServicesService.getUserInfo().subscribe((data: any) =>{
+    this.users = data;
+    console.log('Users data:', this.users);
+    
+   }),
+
+   this.ServicesService.getCarrier().subscribe((carrierData: any) => {
+    this.carrier = carrierData;
+    console.log('Carrier data', this.carrier);
+   })
   }
 
 }

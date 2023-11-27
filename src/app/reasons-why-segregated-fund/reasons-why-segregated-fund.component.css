@@ -1,8 +1,9 @@
 .container {
-    background-color: #e3f2fd;
+    background-color: #2088d3;
     margin-top: 50px;
     border-radius: 25px;
     padding-bottom: 25px;
+
 }
 
 .example-form {
@@ -43,5 +44,7 @@ td {
     font-size: xx-large;
     font-weight: bold;
     padding-top: 25px;
-
 }
+.checkbaox-section {
+    color: black; /* Set font color to black */
+  }

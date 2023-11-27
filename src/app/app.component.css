@@ -1,3 +1,6 @@
+.body{
+background-color: black;
+}
 .mat-icon {
     display: flex;
     transform: scale(2);
