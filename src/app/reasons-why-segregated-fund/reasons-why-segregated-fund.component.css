@@ -45,6 +45,30 @@ td {
     font-weight: bold;
     padding-top: 25px;
 }
-.checkbaox-section {
-    color: black; /* Set font color to black */
-  }
+
+
+.checkbox-label {
+    padding-top: 15px;
+    padding-left: 10px;
+    color: white;
+    font-size: large;
+}
+
+.section-3 {
+    padding-top: 15px;
+}
+
+.Summarized-section {
+    color: white;
+    font-size: large;
+    padding-bottom: 10px;
+}
+
+.investmentCheckboxes {
+    font-size: larger;
+}
+
+h2 {
+    padding-left: 25px;
+    color: white;
+}

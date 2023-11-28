@@ -23,16 +23,23 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-        <div class="row">
             <div class="col">
                 <mat-form-field class="example-full-width">
                     <mat-label>Client Name</mat-label>
                     <input matInput placeholder="Ex. John Doe">
                 </mat-form-field>
             </div>
+            <div class="col"></div>
+        </div>
+        <div class="row">
+            <div class="col checkbox">
+                <label class="checkbox-label">This summary is intended to highlight key information about your recent
+                    purchase. Based on our discussions you purchased the following product:</label><br>
+                <mat-checkbox class="custom-checkbox" [(ngModel)]="checked">Segregated Fund</mat-checkbox>
+            </div>
+
+        </div>
+        <div class="row section-3">
             <div class="col">
                 <mat-form-field class="example-full-width">
                     <mat-label>Carrier:</mat-label>
@@ -69,9 +76,11 @@
             </div>
             <div class="col">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Sales Charge option chose :</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    <mat-label>Sales Charge options chose:</mat-label>
+                    <mat-select [(ngModel)]="salescharge" name="selectedCharge">
+                        <mat-option *ngFor="let saleschargeInfo of salescharge" [value]="saleschargeInfo.salescharge">
+                            {{ saleschargeInfo.salescharge}}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -92,14 +101,39 @@
                 </mat-form-field>
             </div>
         </div>
+        <div class="Summarized-section">
+            <label>Summarized from our discussion, here are the key facts about your situation:</label>
+        </div>
         <div class="row">
             <div class="col">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Summarized from our discussion, here are the key facts about your situation:</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
+                    <mat-label>Option:</mat-label>
+                    <input matInput placeholder="Amount" value="Amount">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Amount:</mat-label>
+                    <mat-select [(ngModel)]="amountSelect" name="selectedAmount">
+                        <mat-option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
+                            {{ amountInfo.amount}}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="investmentCheckboxes">
+                        <section class="example-section" [formGroup]="Investments">
+                            <h2>Purpose of investment</h2>
+                            <mat-checkbox formControlName="savings">Savings</mat-checkbox>
+                            <mat-checkbox formControlName="estateplanning">Estate Planning</mat-checkbox>
+                            <mat-checkbox formControlName="retirement">Retirement</mat-checkbox>
+                            <mat-checkbox formControlName="education">Education</mat-checkbox>
+                        </section>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -107,3 +141,7 @@
         <button mat-raised-button class="full-width">Submit</button>
     </div>
 </div>
+
+<!-- <section class="example-section" [formGroup]="Investments">
+    {{Investments.value | json}}
+</section> -->
