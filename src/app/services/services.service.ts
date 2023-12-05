@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import {SegregatedwhysClass} from '../segregatedwhys-class';
 
 
 
@@ -9,10 +10,33 @@ import { Observable } from 'rxjs';
 })
 export class ServicesService {
 
+  public segregatedwhysdata = new BehaviorSubject<SegregatedwhysClass>(
+      {advisors: '',
+      selectedAdvisor:'',
+      carrier:  '',
+      selectedCarrier:'',
+      checked:  '',
+      indeterminate: '',
+      disabled:  '',
+      salescharge: '',
+      selectedCharge:'',
+      amount: '',
+      amountSelect: '',
+      maturity: '',
+      selectedMaturity: '',
+      deathPercentage: '',
+      selectedDeathPercentage: '',
+});
+getSegregateData(){
+  return this.segregatedwhysdata.asObservable();
+}
+
   userinfo: any = './json/users.json';
   carrier: any = './json/carriers.json';
   salescharge: any = './json/salescharge.json';
   amount: any = './json/amounts.json';
+  maturity: any = './json/maturitydate.json';
+  deathpercentage: any = './json/percent.json';
 
   constructor(private http: HttpClient) { }
 
@@ -31,4 +55,13 @@ export class ServicesService {
   getAmounts() {
     return this.http.get(this.amount);
   }
+  getMaturityDate() {
+    return this.http.get(this.maturity);
+  }
+  getDeathPercent() {
+    return this.http.get(this.deathpercentage);
+  }
+
+
+
 }

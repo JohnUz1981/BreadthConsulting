@@ -5,29 +5,19 @@
         </div>
         <div class="row" style="padding-top: 25px">
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" [formControl]="currentDateTime">
-                    <mat-hint class="example-full-width">MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+                <label for="date">Date:</label>
+                <input id="date" class="form-control" type="date" [(ngModel)]="segregatedFundClass.currentDate"  value="{{getCurrentDate()}}" />
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Advisor Name:</mat-label>
-                    <mat-select [(ngModel)]="selectedUser" name="selectedUser">
-                        <mat-option *ngFor="let user of users" [value]="user.name">
-                            {{ user.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <label for="clientName">Client Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="segregatedFundClass.advisors" name="clientName">
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Client Name</mat-label>
-                    <input matInput placeholder="Ex. John Doe">
-                </mat-form-field>
+                <label for="advisors">Advisors:</label><br>
+                <select class="form-select" name="advisors" [(ngModel)]="selectedAdvisor" name="selectedadvisors"
+                    data-live-search="true">
+                    <option *ngFor="let advisor of advisors">{{ advisor.name }}</option>
+                </select>
             </div>
             <div class="col"></div>
         </div>
@@ -41,64 +31,54 @@
         </div>
         <div class="row section-3">
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Carrier:</mat-label>
-                    <mat-select [(ngModel)]="selectedCarrier" name="selectedCarrier">
-                        <mat-option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
-                            {{ carrierInfo.name }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <label>Carrier:</label>
+                <select class="form-control" [(ngModel)]="selectedCarrier" name="selectedCarrier">
+                    <option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
+                        {{ carrierInfo.name }}
+                    </option>
+                </select>
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Investment Amount:</mat-label>
-                    <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
-                </mat-form-field>
+                <label>Investment Amount:</label>
+                <input type="number" class="form-control" [formControl]="currencyControl" placeholder="Enter Amount">
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Maturity Date Guarantee:</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
-                    </mat-select>
-                </mat-form-field>
+                <label>Maturity Date Guarantee:</label>
+                <select class="form-control" [(ngModel)]="selectedMaturity" name="selectedMaturity">
+                    <option *ngFor="let maturityInfo of maturity" [value]="maturityInfo.maturityDate">
+                        {{ maturityInfo.maturityDate}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Death Benefit Guarantee:</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
-                    </mat-select>
-                </mat-form-field>
+                <label>Death Benefit Guarantee:</label>
+                <select class="form-control" [(ngModel)]="selectedDeathPercentage" name="selectedDeathPercentage">
+                    <option *ngFor="let selectedDeathPercentageInfo of deathPercentage">
+                        {{ selectedDeathPercentageInfo.percent}}
+                    </option>
+                </select>
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Sales Charge options chose:</mat-label>
-                    <mat-select [(ngModel)]="salescharge" name="selectedCharge">
-                        <mat-option *ngFor="let saleschargeInfo of salescharge" [value]="saleschargeInfo.salescharge">
-                            {{ saleschargeInfo.salescharge}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <label>Sales Charge options chose:</label>
+                <select class="form-control" [(ngModel)]="selectedCharge" name="selectedCharge">
+                    <option *ngFor="let salescharges of salescharge">
+                        {{ salescharges.salescharge}}
+                    </option>
+                </select>
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Percentage :</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
-                    </mat-select>
-                </mat-form-field>
+                <label>Percentage :</label>
+                <select class="form-control" placeholder="Enter Amount">
+                </select>
+
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Time Horzion:</mat-label>
-                    <mat-select>
-                        <input matInput [formControl]="currencyControl" placeholder="Enter Amount">
-                    </mat-select>
-                </mat-form-field>
+                <label>Time Horzion:</label>
+                <select class="form-control">
+
+                </select>
             </div>
         </div>
         <div class="Summarized-section">
@@ -106,39 +86,40 @@
         </div>
         <div class="row">
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Option:</mat-label>
-                    <input matInput placeholder="Amount" value="Amount">
-                </mat-form-field>
+                <label>Option:</label>
+                <input class="form-control">
             </div>
             <div class="col">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Amount:</mat-label>
-                    <mat-select [(ngModel)]="amountSelect" name="selectedAmount">
-                        <mat-option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
-                            {{ amountInfo.amount}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <label>Amount:</label>
+                <select class="form-control" [(ngModel)]="amountSelect" name="selectedAmount">
+                    <option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
+                        {{ amountInfo.amount}}
+                    </option>
+                </select>
             </div>
-            <div class="row">
+            <div class="row PurposeOfInvestment">
                 <div class="col">
                     <div class="investmentCheckboxes">
-                        <section class="example-section" [formGroup]="Investments">
-                            <h2>Purpose of investment</h2>
+                        <p>Purpose of investment:
+                        <p>
+                        <section class="custom-checkbox" [formGroup]="Investments">
                             <mat-checkbox formControlName="savings">Savings</mat-checkbox>
                             <mat-checkbox formControlName="estateplanning">Estate Planning</mat-checkbox>
                             <mat-checkbox formControlName="retirement">Retirement</mat-checkbox>
                             <mat-checkbox formControlName="education">Education</mat-checkbox>
+                            <mat-checkbox formControlName="other" [(ngModel)]="isChecked" (change)="toggleInputField()">Other</mat-checkbox>
+                            <div *ngIf="isChecked">
+                                <label>Other</label>
+                                <input class="form-control" placeholder="Other">
+                            </div>
                         </section>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
     <div class="example-button-row">
-        <button mat-raised-button class="full-width">Submit</button>
+        <button mat-raised-button class="full-width" (click)="getSegregatedFundResults()">Next</button>
     </div>
 </div>
 

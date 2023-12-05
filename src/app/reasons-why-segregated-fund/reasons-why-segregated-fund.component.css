@@ -6,11 +6,17 @@
 
 }
 
-.example-form {
+.form-control, .form-select {
+    width:100%;
+    box-sizing:border-box;
+}
+
+
+.form-control {
     padding-top: 15px;
 }
 
-.example-form {
+.form-control {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
@@ -64,11 +70,16 @@ td {
     padding-bottom: 10px;
 }
 
-.investmentCheckboxes {
-    font-size: larger;
-}
-
-h2 {
-    padding-left: 25px;
+.PurposeOfInvestment{
+    font-size: large;
+    padding-bottom: 15px;
+    font-size: large;
     color: white;
+}
+.row.PurposeOfInvestment{
+    padding-top: 10px;
+
+}
+.Summarized-section{
+    padding-top: 10px;
 }
