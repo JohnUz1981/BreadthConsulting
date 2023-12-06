@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ServicesService } from '../services/services.service';
-import { SegregatedwhysClass } from '../segregatedwhys-class';
-import { HttpClient } from '@angular/common/http';
+import { SegregatedwhysInputs } from '../segregatedwhys-class';
+//import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { SegregateServiceService } from '../segregate-service.service';
+
+
 
 @Component({
   selector: 'app-segregated-fund-results',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './segregated-fund-results.component.html',
   styleUrl: './segregated-fund-results.component.css'
 })
-export class SegregatedFundResultsComponent  implements OnInit{
-segregatedFundClass: any;
-  segData: SegregatedwhysClass | undefined;
-  service: any;
+export class SegregatedFundResultsComponent implements OnInit {
+  segData: SegregatedwhysInputs | undefined;
 
-constructor(private http: HttpClient, private ServicesService: ServicesService,){}
+  constructor(private segService: SegregateServiceService) { }
 
-ngInInit(){
-  this.service.getSegregateData().subscribe((segregateddata: SegregatedwhysClass | undefined)=>{
-    console.log(segregateddata);
-    this.segData=segregateddata;
-  })
-}
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() : void {
+    console.log('Component initialized');
+    this.segService.getSegregateData().subscribe((segData) => {
+      console.log("SegResults--->", segData);
+    });
   }
+
 }

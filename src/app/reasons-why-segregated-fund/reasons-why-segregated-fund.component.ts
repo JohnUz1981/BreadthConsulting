@@ -14,6 +14,9 @@ import { ServicesService } from '../services/services.service';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import {SegregatedwhysInputs} from '../segregatedwhys-class'
+import { SegregateServiceService } from '../segregate-service.service';
+
 
 
 interface Advisor {
@@ -39,7 +42,7 @@ interface Maturity{
 }
 
 @Component({
-  providers: [ServicesService],
+  providers: [ServicesService, SegregateServiceService],
   selector: 'app-reasons-why-segregated-fund',
   standalone: true,
   imports: [
@@ -66,8 +69,9 @@ interface Maturity{
   templateUrl: './reasons-why-segregated-fund.component.html',
   styleUrls: ['./reasons-why-segregated-fund.component.css']
 })
-export class ReasonsWhySegregatedFundComponent implements OnInit {
 
+export class ReasonsWhySegregatedFundComponent implements OnInit {
+  clientName: string | undefined;
   advisors: Advisor[] = [];
   selectedAdvisor: string | undefined;
   carrier: Carrier[] = [];
@@ -84,12 +88,35 @@ export class ReasonsWhySegregatedFundComponent implements OnInit {
   deathPercentage: any;
   selectedDeathPercentage: any;
 
-  
+  segDataClass: any = {
+    currentDate:'',
+    clientName:'',
+    advisors:'',
+    carrier:'',
+    selectedCarrier:'',
+    checked:'',
+    indeterminate:'',
+    disabled:'',
+    salescharge:'',
+    selectedCharge:'',
+    amountSelect:'',
+    maturity:'',
+    selectedMaturity:'',
+    deathPercentage:'',
+    selectedDeathPercentage:''
+  };
+
+  getSegregatedFundResults(){
+    //console.log("Why Results---->", this.segDataClass!);
+    this.segService.segregatedwhysdata.next(this.segDataClass!);
+    this.router.navigate(['/segregated-fund-results']);
+  }
+
 
 isChecked: boolean = false;
 inputValue: string = '';
 otherValue: any;
-clientName: any;
+//segData: any;
 
 toggleInputField() {
   this.isChecked = this.isChecked;
@@ -106,7 +133,7 @@ toggleInputField() {
     other: false
   });
 
-  constructor(private http: HttpClient, private ServicesService: ServicesService, private _formBuilder: FormBuilder, private router: Router) {
+  constructor(private http: HttpClient, private ServicesService: ServicesService, private _formBuilder: FormBuilder, private router: Router, private segService: SegregateServiceService) {
     
 
    }
@@ -129,7 +156,7 @@ toggleInputField() {
           // Handle other cases if needed
         }
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching user info:', error);
       }
     );
@@ -148,7 +175,7 @@ toggleInputField() {
           // Handle other cases if needed
         }
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching user info:', error);
       }
     );
@@ -170,37 +197,6 @@ toggleInputField() {
 
   }
 
-  segregatedFundClass: any = {
-    currentDate: '',
-    advisors: '',
-    selectedAdvisor:'',
-    carrier: '',
-    selectedCarrier: '',
-    checked: '',
-    indeterminate: '',
-    disabled: '',
-    salescharge: '',
-    selectedCharge:'',
-    amountSelect: '',
-    maturity: '',
-    selectedMaturity: '',
-    deathPercentage: '',
-    selectedDeathPercentage: ''
-  };
-
-  getSegregatedFundResults(){
-    console.log("Seg Results---->", this.segregatedFundClass);
-    this.ServicesService.segregatedwhysdata.next(this.segregatedFundClass);
-    this.router.navigate(['/segregated-fund-results']);
-  }
-
 }
 
-function ngAfterViewInit() {
-  throw new Error('Function not implemented.');
-}
-
-    function fetchUserInfo() {
-      throw new Error('Function not implemented.');
-    }
 
