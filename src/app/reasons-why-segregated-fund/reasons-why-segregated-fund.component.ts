@@ -47,7 +47,7 @@ interface Maturity{
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
+    //RouterModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -63,7 +63,6 @@ interface Maturity{
     FormsModule,
     MatRadioModule,
     JsonPipe,
-    FormsModule,
     ReactiveFormsModule,
   ],
   templateUrl: './reasons-why-segregated-fund.component.html',
@@ -71,6 +70,35 @@ interface Maturity{
 })
 
 export class ReasonsWhySegregatedFundComponent implements OnInit {
+
+  constructor(private segService: SegregateServiceService, private http: HttpClient, private ServicesService: ServicesService,
+    private _formBuilder: FormBuilder, private router: Router) {
+  }
+
+  inputClass: any = {
+    currentDate1:'1-1-1',
+    clientName1:'John',
+    advisors1:'JOE',
+    carrier:'',
+    selectedCarrier:'',
+    checked:'',
+    indeterminate: '',
+    disabled:'',
+    salescharge:'',
+    selectedCharge:'',
+    amount:'',
+    amountSelect:'',
+    maturity:'',
+    selectedMaturity:'',
+    deathPercentage:'',
+    selectedDeathPercentage:''
+  };
+
+  getSegregatedFundResults(){
+    this.segService.segregatedwhysdata.next(this.inputClass!);
+    this.router.navigate(['/segregated-fund-results']);
+  }
+
   clientName: string | undefined;
   advisors: Advisor[] = [];
   selectedAdvisor: string | undefined;
@@ -87,31 +115,6 @@ export class ReasonsWhySegregatedFundComponent implements OnInit {
   selectedMaturity: any | undefined;
   deathPercentage: any;
   selectedDeathPercentage: any;
-
-  segDataClass: any = {
-    currentDate:'',
-    clientName:'',
-    advisors:'',
-    carrier:'',
-    selectedCarrier:'',
-    checked:'',
-    indeterminate:'',
-    disabled:'',
-    salescharge:'',
-    selectedCharge:'',
-    amountSelect:'',
-    maturity:'',
-    selectedMaturity:'',
-    deathPercentage:'',
-    selectedDeathPercentage:''
-  };
-
-  getSegregatedFundResults(){
-    //console.log("Why Results---->", this.segDataClass!);
-    this.segService.segregatedwhysdata.next(this.segDataClass!);
-    this.router.navigate(['/segregated-fund-results']);
-  }
-
 
 isChecked: boolean = false;
 inputValue: string = '';
@@ -133,10 +136,7 @@ toggleInputField() {
     other: false
   });
 
-  constructor(private http: HttpClient, private ServicesService: ServicesService, private _formBuilder: FormBuilder, private router: Router, private segService: SegregateServiceService) {
-    
 
-   }
    getCurrentDate(): string{
     return new Date().toISOString().split('T')[0];
   }

@@ -1,7 +1,7 @@
 export class SegregatedwhysInputs {
-    public currentDate: string | undefined;
-    public clientName: string | undefined;
-    public advisors: string | undefined;
+    public currentDate1: string | undefined;
+    public clientName1: string | undefined;
+    public advisors1: string | undefined;
     public carrier: string | undefined;
     public selectedCarrier: string | undefined;
     public checked: string | undefined;

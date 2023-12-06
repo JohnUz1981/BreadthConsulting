@@ -7,10 +7,11 @@ import { SegregatedwhysInputs } from './segregatedwhys-class';
   providedIn: 'root'
 })
 export class SegregateServiceService {
+
   public segregatedwhysdata = new BehaviorSubject<SegregatedwhysInputs>({
-    currentDate:'',
-    clientName:'',
-    advisors:'',
+    currentDate1:'',
+    clientName1:'',
+    advisors1:'',
     carrier:'',
     selectedCarrier:'',
     checked:'',
@@ -26,12 +27,12 @@ export class SegregateServiceService {
     selectedDeathPercentage:''
 });
   constructor() {
-    console.log("service call", this.segregatedwhysdata.subscribe);
+    //console.log("service call");
     //this.segregatedwhysdata.subscribe(console.log);
    }
 
-  getSegregateData(){
-      console.log("service is calling");
+   getSegregatedFundResults(){
+      //console.log("service is calling");
       return this.segregatedwhysdata.asObservable();
     }
 }
