@@ -1,3 +1,5 @@
+
+
 .container {
     background-color: #2088d3;
     margin-top: 50px;
@@ -5,13 +7,31 @@
     padding-bottom: 25px;
 
 }
+.error{
+    color: red;
 
+}
+
+.form-control.ng-pristine.ng-invalid.ng-touched{
+    border: 2px solid red;
+
+}
+.row, .next-button{
+    padding-top: 15px;
+}
 .form-control, .form-select {
     width:100%;
     box-sizing:border-box;
 }
-
-
+.custom-checkbox{
+    margin: 10px ;
+}
+.form-check-label{
+    padding-top: 5px;
+}
+.form-check-input{
+    margin: 5px;
+}
 .form-control {
     padding-top: 15px;
 }
@@ -67,9 +87,15 @@ td {
 .Summarized-section {
     color: white;
     font-size: large;
-    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
+.purchaseVerificationCheckbox{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: large;
+}
 .PurposeOfInvestment{
     font-size: large;
     padding-bottom: 15px;
@@ -82,4 +108,16 @@ td {
 }
 .Summarized-section{
     padding-top: 10px;
+}
+.SegregatedFundCheckbox{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: large;
+}
+.SegregatedFundCheckboxLabel{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: large;
 }

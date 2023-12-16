@@ -9,9 +9,9 @@ import { SegregatedwhysInputs } from './segregatedwhys-class';
 export class SegregateServiceService {
 
   public segregatedwhysdata = new BehaviorSubject<SegregatedwhysInputs>({
-    currentDate1:'',
-    clientName1:'',
-    advisors1:'',
+    currentDate:'',
+    clientName:'',
+    advisors:'',
     carrier:'',
     selectedCarrier:'',
     checked:'',
@@ -19,20 +19,25 @@ export class SegregateServiceService {
     disabled:'',
     salescharge:'',
     selectedCharge:'',
+    investmentPurpose:'',
+    investmentPurposeSelect:'',
     amount:'',
     amountSelect:'',
     maturity:'',
     selectedMaturity:'',
     deathPercentage:'',
-    selectedDeathPercentage:''
+    selectedDeathPercentage:'',
+    commissionPercent:'',
+    risktolerance:'',
+    risktoleranceSelect:'',
 });
   constructor() {
-    //console.log("service call");
-    //this.segregatedwhysdata.subscribe(console.log);
+    console.log("service call");
+    this.segregatedwhysdata.subscribe(console.log);
    }
 
    getSegregatedFundResults(){
       //console.log("service is calling");
-      return this.segregatedwhysdata.asObservable();
+      return this.segregatedwhysdata;
     }
 }

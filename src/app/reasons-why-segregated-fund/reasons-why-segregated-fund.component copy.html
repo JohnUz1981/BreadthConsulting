@@ -3,125 +3,154 @@
         <div class="titlepage">
             <p> Reason Why Segregated Funds</p>
         </div>
-        <div class="row" style="padding-top: 25px">
-            <div class="col">
-                <label for="date">Date:</label>
-                <input id="date" class="form-control" type="date" [(ngModel)]="segDataClass.currentDate"  value="{{getCurrentDate()}}" />
-            </div>
-            <div class="col">
-                <label for="clientName">Client Name:</label>
-                <input type="text" class="form-control" [(ngModel)]="segDataClass!.clientName" name="clientName">
-            </div>
-            <div class="col">
-                <label for="advisors">Advisors:</label><br>
-                <select class="form-select" name="advisors" [(ngModel)]="selectedAdvisor" name="selectedadvisors"
-                    data-live-search="true">
-                    <option *ngFor="let advisor of advisors">{{ advisor.name }}</option>
-                </select>
-            </div>
-            <div class="col"></div>
-        </div>
-        <div class="row">
-            <div class="col checkbox">
-                <label class="checkbox-label">This summary is intended to highlight key information about your recent
-                    purchase. Based on our discussions you purchased the following product:</label><br>
-                <mat-checkbox class="custom-checkbox" [(ngModel)]="checked">Segregated Fund</mat-checkbox>
-            </div>
-
-        </div>
-        <div class="row section-3">
-            <div class="col">
-                <label>Carrier:</label>
-                <select class="form-control" [(ngModel)]="selectedCarrier" name="selectedCarrier">
-                    <option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
-                        {{ carrierInfo.name }}
-                    </option>
-                </select>
-            </div>
-            <div class="col">
-                <label>Investment Amount:</label>
-                <input type="number" class="form-control" [formControl]="currencyControl" placeholder="Enter Amount">
-            </div>
-            <div class="col">
-                <label>Maturity Date Guarantee:</label>
-                <select class="form-control" [(ngModel)]="selectedMaturity" name="selectedMaturity">
-                    <option *ngFor="let maturityInfo of maturity" [value]="maturityInfo.maturityDate">
-                        {{ maturityInfo.maturityDate}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label>Death Benefit Guarantee:</label>
-                <select class="form-control" [(ngModel)]="selectedDeathPercentage" name="selectedDeathPercentage">
-                    <option *ngFor="let selectedDeathPercentageInfo of deathPercentage">
-                        {{ selectedDeathPercentageInfo.percent}}
-                    </option>
-                </select>
-            </div>
-            <div class="col">
-                <label>Sales Charge options chose:</label>
-                <select class="form-control" [(ngModel)]="selectedCharge" name="selectedCharge">
-                    <option *ngFor="let salescharges of salescharge">
-                        {{ salescharges.salescharge}}
-                    </option>
-                </select>
-            </div>
-            <div class="col">
-                <label>Percentage :</label>
-                <select class="form-control" placeholder="Enter Amount">
-                </select>
-
-            </div>
-            <div class="col">
-                <label>Time Horzion:</label>
-                <select class="form-control">
-
-                </select>
-            </div>
-        </div>
-        <div class="Summarized-section">
-            <label>Summarized from our discussion, here are the key facts about your situation:</label>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label>Option:</label>
-                <input class="form-control">
-            </div>
-            <div class="col">
-                <label>Amount:</label>
-                <select class="form-control" [(ngModel)]="amountSelect" name="selectedAmount">
-                    <option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
-                        {{ amountInfo.amount}}
-                    </option>
-                </select>
-            </div>
-            <div class="row PurposeOfInvestment">
+        <form [formGroup]! ="myForm" (ngSubmit)="getSegregatedFundResults()" novalidate>
+            <div class="row" style="padding-top: 25px">
                 <div class="col">
-                    <div class="investmentCheckboxes">
-                        <p>Purpose of investment:
-                        <p>
-                        <section class="custom-checkbox" [formGroup]="Investments">
-                            <mat-checkbox formControlName="savings">Savings</mat-checkbox>
-                            <mat-checkbox formControlName="estateplanning">Estate Planning</mat-checkbox>
-                            <mat-checkbox formControlName="retirement">Retirement</mat-checkbox>
-                            <mat-checkbox formControlName="education">Education</mat-checkbox>
-                            <mat-checkbox formControlName="other" [(ngModel)]="isChecked" (change)="toggleInputField()">Other</mat-checkbox>
-                            <div *ngIf="isChecked">
-                                <label>Other</label>
-                                <input class="form-control" placeholder="Other">
-                            </div>
-                        </section>
+                    <label for="date">Date:</label>
+                    <input id="date" class="form-control" type="date" [(ngModel)]="inputClass!.currentDate" />
+                    <div *ngIf="myForm!.get('currentDate')?.hasError('required') && myForm!.get('currentDate')!.touched">
+                        Date is required.
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="clientName">Client Name:</label>s
+                    <input type="text" class="form-control" [(ngModel)]="inputClass!.clientName"
+                        formControlName="clientName">
+                </div>
+                <div class="col">
+                    <label for="advisors">Advisors:</label><br>
+                    <select class="form-control" name="advisors" [(ngModel)]="inputClass!.advisors"
+                        data-live-search="true">
+                        <option *ngFor="let advisor of advisors">{{ advisor.name }}</option>
+                    </select>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col checkbox">
+                    <label class="checkbox-label">This summary is intended to highlight key information about your
+                        recent
+                        purchase. Based on our discussions you purchased the following product:</label><br>
+                    <div class="SegregatedFundCheckbox">
+                        <input class="form-check-input" type="checkbox" value="" id="SegregatedFundCheckbox_id"
+                            [(ngModel)]="isChecked" required>
+                        <label class="SegregatedFundCheckboxLabel">Segregated Funds</label>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row section-3">
+                <div class="col">
+                    <label>Carrier:</label>
+                    <select class="form-control" [(ngModel)]="selectedCarrier" formControlName="selectedCarrier">
+                        <option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
+                            {{ carrierInfo.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Investment Amount:</label>
+                    <input type="number" class="form-control" [formControl]="currencyControl"
+                        placeholder="Enter Amount">
+                </div>
+                <div class="col">
+                    <label>Maturity Date Guarantee:</label>
+                    <select class="form-control" [(ngModel)]="selectedMaturity" formControlName="selectedMaturity">
+                        <option *ngFor="let maturityInfo of maturity" [value]="maturityInfo.maturityDate">
+                            {{ maturityInfo.maturityDate}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Death Benefit Guarantee:</label>
+                    <select class="form-control" [(ngModel)]="selectedDeathPercentage"
+                        formControlName="selectedDeathPercentage">
+                        <option *ngFor="let selectedDeathPercentageInfo of deathPercentage">
+                            {{ selectedDeathPercentageInfo.percent}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Sales Charge options chose:</label>
+                    <select class="form-control" [(ngModel)]="selectedCharge" formControlName="selectedCharge">
+                        <option *ngFor="let salescharges of salescharge">
+                            {{ salescharges.salescharge}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Percentage :</label>
+                    <input type="number" class="form-control" [(ngModel)]="commissionPercent"
+                        formControlName="commissionPercent" id="commissionPercent">
+                </div>
+                <div class="col">
+                    <label>Time Horzion:</label>
+                    <select class="form-control">
+
+                    </select>
+                </div>
+            </div>
+            <div class="Summarized-section">
+                <label>Summarized from our discussion, here are the key facts about your situation:</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Amount:</label>
+                    <select class="form-control" [(ngModel)]="amountSelect" formControlName="selectedAmount">
+                        <option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
+                            {{ amountInfo.amount}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Risk Tolerance:</label>
+                    <select class="form-control" [(ngModel)]="inputClass!.risktoleranceSelect"
+                        name="risktoleranceSelect">
+                        <option *ngFor="let risktoleranceInfo of risktolerance"
+                            [value]="risktoleranceInfo.risktolerance">
+                            {{ risktoleranceInfo.risktolerance }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Investment Purpose:</label>
+                    <select class="form-control" [(ngModel)]="inputClass!.investmentPurposeSelect"
+                        name="investmentPurposeSelect">
+                        <option *ngFor="let investmentPurposeInfo of investmentpurpose"
+                            [value]="investmentPurposeInfo.investmentPurpose">
+                            {{ investmentPurposeInfo.investmentPurpose }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" *ngIf="inputClass?.investmentPurposeSelect === 'Other'">
+                    <label for="OtherInvestmentPurpose">Other Investment Purposes:</label>
+                    <input type="text" class="form-control" id="OtherInvestmentPurpose">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col purchaseVerificationCheckbox">
+                    <label for="purchaseVerification">You purchased the product because:</label><br>
+                </div>
+                <div class="purchaseVerificationCheckbox">
+                    <input class="form-check-input" type="checkbox" value="" id="purchaseVerificationCheckbox_id"
+                        required>
+                    <label class="form-check-label">
+                        This plan guarantees your deposits at a future maturity date and a death benefit with no medical
+                        requirements. It provides potential protection from creditors and the ability to name a
+                        beneficiary to ensure privacy.
+                    </label>
+                </div>
+            </div>
+            <div class="row next-button">
+                <div class="example-button-row">
+                    <button mat-raised-button class="full-width" type="submit" [disabled]="myForm.invalid">
+                        Next
+                    </button>
+                </div>
+
+            </div>
+        </form>
     </div>
-    <div class="example-button-row">
-        <button mat-raised-button class="full-width" (click)="getSegregatedFundResults()">Next</button>
-    </div>
-</div>
-<!-- <section class="example-section" [formGroup]="Investments">
-    {{Investments.value | json}}
-</section> -->

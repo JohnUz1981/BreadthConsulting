@@ -1,7 +1,7 @@
 export class SegregatedwhysInputs {
-    public currentDate1: string | undefined;
-    public clientName1: string | undefined;
-    public advisors1: string | undefined;
+    public currentDate: string | undefined;
+    public clientName: string | undefined;
+    public advisors: string | undefined;
     public carrier: string | undefined;
     public selectedCarrier: string | undefined;
     public checked: string | undefined;
@@ -9,12 +9,17 @@ export class SegregatedwhysInputs {
     public disabled: string | undefined;
     public salescharge: string | undefined;
     public selectedCharge: string | undefined;
+    public commissionPercent: string | undefined;
     public amount: string | undefined;
     public amountSelect: string | undefined;
     public maturity: string | undefined;
     public selectedMaturity: any | undefined;
     public deathPercentage: string | undefined;
     public selectedDeathPercentage: string | undefined;
+    public investmentPurpose: string | undefined;
+    public investmentPurposeSelect: string | undefined;
+    public risktolerance: string | undefined;
+    public risktoleranceSelect: string | undefined;
       static segDataClass: string | undefined;
 }
 

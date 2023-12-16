@@ -9,7 +9,7 @@ import { SegregatedFundResultsComponent } from './segregated-fund-results/segreg
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'reasons-why-segregated-fund', component: ReasonsWhySegregatedFundComponent },
-    {path: 'segregated-fund-results', component: SegregatedFundResultsComponent}
+    { path: 'segregated-fund-results', component: SegregatedFundResultsComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

@@ -20,8 +20,9 @@ export class SegregatedFundResultsComponent implements OnInit {
   constructor(private segService: SegregateServiceService) { }
 
   ngOnInit() : void {
-    this.segService.getSegregatedFundResults().subscribe((segData) => {
-      console.log("getdata:", segData);
+    this.segService.getSegregatedFundResults().subscribe((segResultData: SegregatedwhysInputs) => {
+      this.segData = segResultData;
+      console.log("getdata----->:", segResultData);
     });
   }
 

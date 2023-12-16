@@ -16,6 +16,8 @@ export class ServicesService {
   amount: any = './json/amounts.json';
   maturity: any = './json/maturitydate.json';
   deathpercentage: any = './json/percent.json';
+  investmentpurpose: any = './json/investmentpurpose.json';
+  risktolerance: any = './json/risktolerance.json';
 
   getUserInfo() {
     return this.http.get(this.userinfo);
@@ -38,8 +40,11 @@ export class ServicesService {
   getDeathPercent() {
     return this.http.get(this.deathpercentage);
   }
+  getInvestmentPurpose(){
+    return this.http.get(this.investmentpurpose);
+  }
 
-
-
-
+  getRisktolerance(){
+    return this.http.get(this.risktolerance);
+  }
 }

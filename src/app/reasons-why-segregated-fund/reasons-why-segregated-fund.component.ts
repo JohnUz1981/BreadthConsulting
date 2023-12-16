@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -40,14 +40,23 @@ interface Amounts {
 interface Maturity{
   maturityDate: any;
 }
+interface InvestmentPurpose{
+  name: string;
+  value: any; 
+  viewValue: string;
+}
+interface Risktolerance{
+  name: string;
+  value: any; 
+  viewValue: string;
+}
 
 @Component({
-  providers: [ServicesService, SegregateServiceService],
+  providers: [],
   selector: 'app-reasons-why-segregated-fund',
   standalone: true,
   imports: [
     CommonModule,
-    //RouterModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -70,35 +79,44 @@ interface Maturity{
 })
 
 export class ReasonsWhySegregatedFundComponent implements OnInit {
+SegregatedFundFormValidation: any;
+  log(x: any){
+    console.log(x)
+  }
+ 
 
   constructor(private segService: SegregateServiceService, private http: HttpClient, private ServicesService: ServicesService,
     private _formBuilder: FormBuilder, private router: Router) {
-  }
 
-  inputClass: any = {
-    currentDate1:'1-1-1',
-    clientName1:'John',
-    advisors1:'JOE',
+  }
+   
+  inputClass: SegregatedwhysInputs = {
+    currentDate:'',
+    clientName:'',
+    advisors:'',
     carrier:'',
     selectedCarrier:'',
     checked:'',
     indeterminate: '',
     disabled:'',
     salescharge:'',
+    investmentPurpose:'',
+    investmentPurposeSelect:'',
+    commissionPercent:'',
     selectedCharge:'',
     amount:'',
     amountSelect:'',
     maturity:'',
     selectedMaturity:'',
     deathPercentage:'',
-    selectedDeathPercentage:''
+    selectedDeathPercentage:'',
+    risktolerance:'',
+    risktoleranceSelect:'',
   };
 
-  getSegregatedFundResults(){
-    this.segService.segregatedwhysdata.next(this.inputClass!);
-    this.router.navigate(['/segregated-fund-results']);
-  }
 
+
+  currentDate:string | undefined
   clientName: string | undefined;
   advisors: Advisor[] = [];
   selectedAdvisor: string | undefined;
@@ -115,26 +133,34 @@ export class ReasonsWhySegregatedFundComponent implements OnInit {
   selectedMaturity: any | undefined;
   deathPercentage: any;
   selectedDeathPercentage: any;
+  investmentpurpose: any | undefined;
+  investmentPurposeSelect: InvestmentPurpose[] = [];
+  commissionPercent: string | undefined;
+  risktolerance: any;
+  risktoleranceSelect: Risktolerance[] = [];
 
 isChecked: boolean = false;
 inputValue: string = '';
 otherValue: any;
-//segData: any;
 
 toggleInputField() {
   this.isChecked = this.isChecked;
   console.log(this.isChecked);
 }
 
-  
+getSegregatedFundResults(){
+  this.segService.segregatedwhysdata.next(this.inputClass!);
+  console.log("Parent---->",this.inputClass);
+  this.router.navigate(['/segregated-fund-results']);
+}
 
-  Investments = this._formBuilder.group({
-    savings: false,
-    estateplanning: false,
-    retirement: false,
-    education: false,
-    other: false
-  });
+  // Investments = this._formBuilder.group({
+  //   savings: false,
+  //   estateplanning: false,
+  //   retirement: false,
+  //   education: false,
+  //   other: false
+  // });
 
 
    getCurrentDate(): string{
@@ -143,6 +169,7 @@ toggleInputField() {
   
   currencyControl = new FormControl('', [Validators.required]);
 
+ 
 
   ngOnInit(): void {
 
@@ -153,7 +180,6 @@ toggleInputField() {
           this.advisors = data;
           console.log('Users data:', this.advisors);
         } else {
-          // Handle other cases if needed
         }
       },
       (error: any) => {
@@ -179,7 +205,30 @@ toggleInputField() {
         console.error('Error fetching user info:', error);
       }
     );
-        
+     
+   this.ServicesService.getInvestmentPurpose().subscribe((investmentPurposeData: InvestmentPurpose[] | Object) =>{
+    if(Array.isArray(investmentPurposeData)){
+      this.investmentpurpose = investmentPurposeData;
+      console.log(investmentPurposeData);
+    }else{
+
+    }
+  },
+  (error: any) => {
+    console.error('Error fetching user info:', error);
+  }
+  );
+    this.ServicesService.getRisktolerance().subscribe((risktoleranceData: Risktolerance[] | object) => {
+      if (Array.isArray(risktoleranceData)) {
+        this.risktolerance = risktoleranceData;
+        console.log('Risk Tolerance--->:', risktoleranceData);
+      } else {
+      }
+    },
+      (error: any) => {
+        console.error('Error fetching user info:', error);
+      }
+    );
 
     this.ServicesService.getAmounts().subscribe((amountData: any) => {
       console.log(amountData);
@@ -195,8 +244,31 @@ toggleInputField() {
       this.deathPercentage = deathPercent
     })
 
-  }
 
+   //Form Validation
+
+  //   this.SegregatedFundFormValidation = this._formBuilder.group({
+  // //new Date().toISOString().substring(0, 10)
+  //   clientName: ['', Validators.required],      
+  //   currentDate: ['', Validators.required],
+  //     advisors: ['', Validators.required],
+  //     segregatedFundCheckbox: [false, Validators.required],
+  //     selectedCarrier: ['', Validators.required],
+  //     investmentAmount: ['', [Validators.required, Validators.min(0)]],
+  //     selectedMaturity: ['', Validators.required],
+  //     selectedDeathPercentage: ['', Validators.required],
+  //     selectedCharge: ['', Validators.required],
+  //     commissionPercent: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+  //     amountSelect: ['', Validators.required],
+  //     risktoleranceSelect: ['', Validators.required],
+  //     investmentPurposeSelect: ['', Validators.required],
+  //     otherInvestmentPurpose: [''],
+  //     purchaseVerificationCheckbox: [false, Validators.required],
+
+   // });
+  
+
+  }
 }
 
 

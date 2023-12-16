@@ -1,7 +1,7 @@
 [
-    {"risktolernace": "Conservative"},
-    {"risktolernace": "Moderate"},
-    {"risktolernace": "Balanced"},
-    {"risktolernace": "Growth"},
-    {"risktolernace": "Agressive"}
+    {"risktolerance": "Conservative"},
+    {"risktolerance": "Moderate"},
+    {"risktolerance": "Balanced"},
+    {"risktolerance": "Growth"},
+    {"risktolerance": "Agressive"}
 ]
