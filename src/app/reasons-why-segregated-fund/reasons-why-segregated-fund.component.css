@@ -13,7 +13,7 @@
 }
 
 .form-control.ng-pristine.ng-invalid.ng-touched{
-    border: 2px solid red;
+    border-left: 5px solid red;
 
 }
 .row, .next-button{
@@ -74,7 +74,7 @@ td {
 
 
 .checkbox-label {
-    padding-top: 15px;
+    padding-top: 05px;
     padding-left: 10px;
     color: white;
     font-size: large;

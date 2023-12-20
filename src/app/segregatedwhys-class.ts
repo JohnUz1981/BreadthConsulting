@@ -4,7 +4,7 @@ export class SegregatedwhysInputs {
     public advisors: string | undefined;
     public carrier: string | undefined;
     public selectedCarrier: string | undefined;
-    public checked: string | undefined;
+    public aggreeToSegFundchecked: string | undefined;
     public indeterminate: string | undefined;
     public disabled: string | undefined;
     public salescharge: string | undefined;
@@ -20,6 +20,9 @@ export class SegregatedwhysInputs {
     public investmentPurposeSelect: string | undefined;
     public risktolerance: string | undefined;
     public risktoleranceSelect: string | undefined;
+    public selectedTimeHorizon:string | undefined;
+    public purchaseVerificationCheckbox: string | undefined;
+    public OtherInvestmentPurpose: string | undefined;
       static segDataClass: string | undefined;
 }
 

@@ -7,19 +7,24 @@
             <div class="row" style="padding-top: 25px">
                 <div class="col">
                     <label for="date">Date:</label>
-                    <input id="date" class="form-control" type="date" [(ngModel)]="inputClass!.currentDate" name="currentDate"/>
+                    <input id="date" class="form-control" type="date" [(ngModel)]="inputClass!.currentDate"
+                        name="currentDate" />
                 </div>
                 <div class="col">
                     <label for="clientName">Client Name:</label>
-                    <input type="text" class="form-control" [(ngModel)]="inputClass!.clientName" name="clientName" id="clientName" #clientName="ngModel" required>
+                    <input type="text" class="form-control" [(ngModel)]="inputClass!.clientName" name="clientName"
+                        id="clientName" #clientName="ngModel" required>
                     <div class="error" *ngIf="clientName.touched && !clientName.valid">*Client name is required.</div>
                 </div>
                 <div class="col">
                     <label for="advisors">Advisors:</label><br>
-                    <select class="form-control" name="advisors" [(ngModel)]="inputClass!.advisors" data-live-search="true" #advisorsCheck="ngModel" (change)="log(myForm)" required>
+                    <select class="form-control" name="advisors" [(ngModel)]="inputClass!.advisors"
+                        data-live-search="true" #advisorsCheck="ngModel" required>
+                        <option disabled selected>Select</option>
                         <option *ngFor="let advisor of advisors">{{ advisor.name }}</option>
                     </select>
-                    <div class="error" *ngIf="advisorsCheck.touched && !advisorsCheck.valid">*Please select an Advisor.</div>
+                    <div class="error" *ngIf="advisorsCheck.touched && !advisorsCheck.valid">*Please select an Advisor.
+                    </div>
                 </div>
                 <div class="col"></div>
             </div>
@@ -30,60 +35,90 @@
                         purchase. Based on our discussions you purchased the following product:</label><br>
                     <div class="SegregatedFundCheckbox">
                         <input class="form-check-input" type="checkbox" value="" id="SegregatedFundCheckbox_id"
-                            [(ngModel)]="isChecked" required name="SegregatedFundCheckbox">
+                            [(ngModel)]="inputClass.aggreeToSegFundchecked" #aggreeToSegFundchecked="ngModel"
+                            (change)="log(myForm)" required name="SegregatedFundCheckbox">
                         <label class="SegregatedFundCheckboxLabel">Segregated Funds</label>
                     </div>
+                    <div class="error" *ngIf="!aggreeToSegFundchecked.valid && aggreeToSegFundchecked.touched">*You
+                        missed a checkbox</div>
                 </div>
             </div>
             <div class="row section-3">
                 <div class="col">
                     <label>Carrier:</label>
-                    <select class="form-control" [(ngModel)]="selectedCarrier" name="selectedCarrier" name="selectedCarrier">
-                        <option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">
-                            {{ carrierInfo.name }}
+                    <select class="form-control" [(ngModel)]="inputClass!.carrier" #carrierInput="ngModel"
+                        name="carrier" required>
+                        <option disabled selected>Select</option>
+                        <option *ngFor="let carrierInfo of carrier" [value]="carrierInfo.name">{{ carrierInfo.name }}
                         </option>
                     </select>
+                    <div class="error" *ngIf="carrierInput.touched && !carrierInput.valid">*Please select a Carrier.
+                    </div>
                 </div>
                 <div class="col">
                     <label>Investment Amount:</label>
-                    <input type="number" class="form-control" placeholder="Enter Amount" name="investmentAmount">
+                    <input type="number" class="form-control" placeholder="Enter Amount" [(ngModel)]="inputClass.amount"
+                        #investmentAmountInput="ngModel" name="investmentAmount" required>
+                    <div class="error" *ngIf="investmentAmountInput.touched && !investmentAmountInput.valid">*Please
+                        enter Investment Amount.
+                    </div>
                 </div>
                 <div class="col">
                     <label>Maturity Date Guarantee:</label>
-                    <select class="form-control" [(ngModel)]="selectedMaturity" name="selectedMaturity">
-                        <option *ngFor="let maturityInfo of maturity" [value]="maturityInfo.maturityDate">
-                            {{ maturityInfo.maturityDate}}
-                        </option>
+                    <select class="form-control" [(ngModel)]="inputClass.maturity" #maturityDateInput="ngModel"
+                        name="Maturity" required>
+                        <option disabled selected>Select</option>
+                        <option *ngFor="let maturityInfo of maturity" [value]="maturityInfo.maturityDate">{{
+                            maturityInfo.maturityDate}}</option>
                     </select>
+                    <div class="error" *ngIf="maturityDateInput.touched && !maturityDateInput.valid">*Please select
+                        maturity date.
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label>Death Benefit Guarantee:</label>
-                    <select class="form-control" [(ngModel)]="selectedDeathPercentage" name="selectedDeathPercentage">
-                        <option *ngFor="let selectedDeathPercentageInfo of deathPercentage">
-                            {{ selectedDeathPercentageInfo.percent}}
-                        </option>
+                    <select class="form-control" [(ngModel)]="inputClass.deathPercentage" #deathBeneifitInput="ngModel"
+                        name="selectedDeathPercentage" required>
+                        <option disabled selected>Select</option>
+                        <option *ngFor="let selectedDeathPercentageInfo of deathPercentage">{{
+                            selectedDeathPercentageInfo.percent}}</option>
                     </select>
+                    <div class="error" *ngIf="deathBeneifitInput.touched && !deathBeneifitInput.valid">*Please select
+                        maturity date.
+                    </div>
                 </div>
                 <div class="col">
-                    <label>Sales Charge options chose:</label>
-                    <select class="form-control" [(ngModel)]="selectedCharge" name="selectedCharge">
-                        <option *ngFor="let salescharges of salescharge">
-                            {{ salescharges.salescharge}}
-                        </option>
+                    <label>Sales Charge options:</label>
+                    <select class="form-control" [(ngModel)]="inputClass.salescharge" #saleChargeOptionsInput="ngModel"
+                        name="selectedCharge" required>
+                        <option disabled selected>Select</option>
+                        <option *ngFor="let salescharges of salescharge">{{ salescharges.salescharge}}</option>
                     </select>
+                    <div class="error" *ngIf="saleChargeOptionsInput.touched && !saleChargeOptionsInput.valid">*Please
+                        select a sales charge option.
+                    </div>
                 </div>
                 <div class="col">
                     <label>Percentage :</label>
-                    <input type="number" class="form-control" [(ngModel)]="commissionPercent" name="commissionPercent"
-                        id="commissionPercent">
+                    <input type="number" class="form-control" [(ngModel)]="inputClass.commissionPercent"
+                        #investmentPercentage="ngModel" name="commissionPercent" id="commissionPercent" required>
+                    <div class="error" *ngIf="investmentPercentage.touched && !investmentPercentage.valid">*Please enter
+                        a Investment Percentage.
+                    </div>
                 </div>
                 <div class="col">
-                    <label>Time Horzion:</label>
-                    <select class="form-control">
-
+                    <label>Time Horizon:</label>
+                    <select class="form-control" [(ngModel)]="inputClass.selectedTimeHorizon" #timeHorizonInput="ngModel" name="selectedTimeHorizon"
+                        value="Select" required>
+                        <option disabled selected>Select</option>
+                        <option *ngFor="let timeHorizons of timeHorizon">
+                            {{ timeHorizons.horizontime}}
+                        </option>
                     </select>
+                    <div class="error" *ngIf="timeHorizonInput.touched && !timeHorizonInput.valid">*Please select a Time Horizon.
+                    </div>
                 </div>
             </div>
             <div class="Summarized-section">
@@ -92,37 +127,44 @@
             <div class="row">
                 <div class="col">
                     <label>Amount:</label>
-                    <select class="form-control" [(ngModel)]="amountSelect" name="selectedAmount">
+                    <select class="form-control" [(ngModel)]="inputClass.amountSelect" #investmentAmountInput1="ngModel" name="selectedAmount" required>
                         <option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
                             {{ amountInfo.amount}}
                         </option>
                     </select>
+                    <div class="error" *ngIf="investmentAmountInput1.touched && !investmentAmountInput1.valid">*Please enter Investment amount.
+                    </div>
                 </div>
                 <div class="col">
                     <label>Risk Tolerance:</label>
-                    <select class="form-control" [(ngModel)]="inputClass!.risktoleranceSelect"
-                        name="risktoleranceSelect">
+                    <select class="form-control" [(ngModel)]="inputClass!.risktoleranceSelect" #riskToleranceInput="ngModel"
+                        name="risktoleranceSelect" required>
                         <option *ngFor="let risktoleranceInfo of risktolerance"
                             [value]="risktoleranceInfo.risktolerance">
                             {{ risktoleranceInfo.risktolerance }}
                         </option>
                     </select>
+                    <div class="error" *ngIf="riskToleranceInput.touched && !riskToleranceInput.valid">*Please select a risk tolernace.
+                    </div>
                 </div>
                 <div class="col">
                     <label>Investment Purpose:</label>
-                    <select class="form-control" [(ngModel)]="inputClass!.investmentPurposeSelect"
-                        name="investmentPurposeSelect">
+                    <select class="form-control" [(ngModel)]="inputClass!.investmentPurposeSelect" #investmentPurposeInput="ngModel"
+                        name="investmentPurposeSelect" required>
                         <option *ngFor="let investmentPurposeInfo of investmentpurpose"
                             [value]="investmentPurposeInfo.investmentPurpose">
                             {{ investmentPurposeInfo.investmentPurpose }}
                         </option>
                     </select>
+                    <div class="error" *ngIf="investmentPurposeInput.touched && !investmentPurposeInput.valid">*Please select your investment purpose.
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col" *ngIf="inputClass?.investmentPurposeSelect === 'Other'">
                     <label for="OtherInvestmentPurpose">Other Investment Purposes:</label>
-                    <input type="text" class="form-control" id="OtherInvestmentPurpose_id" name="OtherInvestmentPurpose">
+                    <input type="text" class="form-control" id="OtherInvestmentPurpose_id" name="OtherInvestmentPurpose"
+                        [(ngModel)]="inputClass.OtherInvestmentPurpose">
                 </div>
             </div>
             <div class="row">
@@ -130,17 +172,24 @@
                     <label for="purchaseVerification">You purchased the product because:</label><br>
                 </div>
                 <div class="purchaseVerificationCheckbox">
-                    <input class="form-check-input" type="checkbox" value="" id="purchaseVerificationCheckbox_id" name="purchaseVerificationCheckbox">
+                    <input class="form-check-input" type="checkbox" value="" id="purchaseVerificationCheckbox_id"
+                        [(ngModel)]="inputClass.purchaseVerificationCheckbox" #purchaseVerificationCheckbox="ngModel"
+                        name="purchaseVerificationCheckbox">
                     <label class="form-check-label">
                         This plan guarantees your deposits at a future maturity date and a death benefit with no medical
                         requirements. It provides potential protection from creditors and the ability to name a
                         beneficiary to ensure privacy.
                     </label>
+                    <div *ngIf="!purchaseVerificationCheckbox.valid" class="alert alert-danger" role="alert">
+                        You have not selected the checkbox to confirm your decision for the plan. Ensure you review and
+                        mark the checkbox to guarantee your deposits, secure the death benefit, protect against
+                        creditors, and designate a beneficiary for added privacy.
+                    </div>
                 </div>
             </div>
             <div class="row next-button">
                 <div class="example-button-row">
-                    <button mat-raised-button class="full-width" (click)="log(myForm)" [disabled]="myForm.valid">Next</button>
+                    <button mat-raised-button class="full-width" (click)="log(myForm)" [disabled]="myForm.invalid">Next</button>
                 </div>
             </div>
         </form>

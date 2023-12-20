@@ -50,6 +50,11 @@ interface Risktolerance{
   value: any; 
   viewValue: string;
 }
+interface TimeHorizon{
+  name: string;
+  value: any; 
+  viewValue: string;
+}
 
 @Component({
   providers: [],
@@ -83,7 +88,6 @@ SegregatedFundFormValidation: any;
   log(x: any){
     console.log(x)
   }
- 
 
   constructor(private segService: SegregateServiceService, private http: HttpClient, private ServicesService: ServicesService,
     private _formBuilder: FormBuilder, private router: Router) {
@@ -96,7 +100,7 @@ SegregatedFundFormValidation: any;
     advisors:'',
     carrier:'',
     selectedCarrier:'',
-    checked:'',
+    aggreeToSegFundchecked:'',
     indeterminate: '',
     disabled:'',
     salescharge:'',
@@ -112,6 +116,10 @@ SegregatedFundFormValidation: any;
     selectedDeathPercentage:'',
     risktolerance:'',
     risktoleranceSelect:'',
+    selectedTimeHorizon:'',
+    purchaseVerificationCheckbox:'',
+    OtherInvestmentPurpose:'',
+    
   };
 
 
@@ -122,7 +130,7 @@ SegregatedFundFormValidation: any;
   selectedAdvisor: string | undefined;
   carrier: Carrier[] = [];
   selectedCarrier: string | undefined;
-  checked = false;
+  aggreeToSegFundchecked = false;
   indeterminate = false;
   disabled = false;
   salescharge: SalesCharge[] = [];
@@ -138,14 +146,17 @@ SegregatedFundFormValidation: any;
   commissionPercent: string | undefined;
   risktolerance: any;
   risktoleranceSelect: Risktolerance[] = [];
+  timeHorizon: any | undefined;
+  selectedTimeHorizon: TimeHorizon[] = [];
 
-isChecked: boolean = false;
+
+//aggreeToSegFundchecked: boolean = false;
 inputValue: string = '';
 otherValue: any;
 
 toggleInputField() {
-  this.isChecked = this.isChecked;
-  console.log(this.isChecked);
+  this.aggreeToSegFundchecked = this.aggreeToSegFundchecked;
+  console.log(this.aggreeToSegFundchecked);
 }
 
 getSegregatedFundResults(){
@@ -153,14 +164,6 @@ getSegregatedFundResults(){
   console.log("Parent---->",this.inputClass);
   this.router.navigate(['/segregated-fund-results']);
 }
-
-  // Investments = this._formBuilder.group({
-  //   savings: false,
-  //   estateplanning: false,
-  //   retirement: false,
-  //   education: false,
-  //   other: false
-  // });
 
 
    getCurrentDate(): string{
@@ -172,6 +175,10 @@ getSegregatedFundResults(){
  
 
   ngOnInit(): void {
+
+
+  
+    this.inputClass.currentDate = this.getCurrentDate();
 
     this.ServicesService.getUserInfo().subscribe(
       (data: Advisor[] | Object) => {
@@ -243,30 +250,11 @@ getSegregatedFundResults(){
       console.log(deathPercent);
       this.deathPercentage = deathPercent
     })
+    this.ServicesService.getTimeHorizon().subscribe((timeHorizondata: any) =>{
+      console.log(timeHorizondata);
+      this.timeHorizon = timeHorizondata
+    })
 
-
-   //Form Validation
-
-  //   this.SegregatedFundFormValidation = this._formBuilder.group({
-  // //new Date().toISOString().substring(0, 10)
-  //   clientName: ['', Validators.required],      
-  //   currentDate: ['', Validators.required],
-  //     advisors: ['', Validators.required],
-  //     segregatedFundCheckbox: [false, Validators.required],
-  //     selectedCarrier: ['', Validators.required],
-  //     investmentAmount: ['', [Validators.required, Validators.min(0)]],
-  //     selectedMaturity: ['', Validators.required],
-  //     selectedDeathPercentage: ['', Validators.required],
-  //     selectedCharge: ['', Validators.required],
-  //     commissionPercent: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-  //     amountSelect: ['', Validators.required],
-  //     risktoleranceSelect: ['', Validators.required],
-  //     investmentPurposeSelect: ['', Validators.required],
-  //     otherInvestmentPurpose: [''],
-  //     purchaseVerificationCheckbox: [false, Validators.required],
-
-   // });
-  
 
   }
 }

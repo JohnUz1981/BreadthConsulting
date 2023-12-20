@@ -1,0 +1,24 @@
+.container.SegregatedFundSummary{
+    background-color:#2088D3;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+.SegregatedFundHeader{
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 5px;
+}
+.SegregatedFundLead{
+    text-align: left;
+    color: white;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+.mainrow{
+    display: flex;
+    color: white;
+    font-size: medium;
+
+}

@@ -1,4 +1,50 @@
-<p>segregated-fund-results works!</p>
-<p>clientName:
-   {{segData!.advisors}}
-</p>
+<div class="container-fluid">
+   <div class="container SegregatedFundSummary">
+      <div class="SegregatedFundSummary">
+         <h1 class="SegregatedFundHeader">Reasons Why Segregated Funds</h1>
+         <p class="SegregatedFundLead">Summary:</p>
+      </div>
+      <div class="mainrow">
+         <div class="col">
+            <label for="date">Date:</label>
+            <p>{{segData!.currentDate}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Client Name:</label>
+            <p>{{segData!.clientName}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Advisor:</label>
+            <p>{{segData!.advisors}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Carrier:</label>
+            <p>{{segData!.carrier}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Sales Charge options:</label>
+            <p>{{segData!.salescharge}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Investment Percentage:</label>
+            <p>{{segData!.commissionPercent}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Time Horizon:</label>
+            <p>{{segData!.selectedTimeHorizon}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Amount:</label>
+            <p>{{segData!.amountSelect}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Risk Tolerance:</label>
+            <p>{{segData!.risktoleranceSelect}}</p>
+         </div>
+         <div class="col">
+            <label for="date">Investment Purpose:</label>
+            <p>{{segData!.investmentPurposeSelect}}</p>
+         </div>
+      </div>
+   </div>
+</div>

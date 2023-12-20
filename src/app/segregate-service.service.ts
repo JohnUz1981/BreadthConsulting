@@ -14,7 +14,7 @@ export class SegregateServiceService {
     advisors:'',
     carrier:'',
     selectedCarrier:'',
-    checked:'',
+    aggreeToSegFundchecked:'',
     indeterminate: '',
     disabled:'',
     salescharge:'',
@@ -30,6 +30,9 @@ export class SegregateServiceService {
     commissionPercent:'',
     risktolerance:'',
     risktoleranceSelect:'',
+    selectedTimeHorizon:'',
+    purchaseVerificationCheckbox:'',
+    OtherInvestmentPurpose:'',
 });
   constructor() {
     console.log("service call");
