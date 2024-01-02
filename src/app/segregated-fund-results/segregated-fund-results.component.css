@@ -5,20 +5,30 @@
 }
 .SegregatedFundHeader{
     text-align: center;
-    color: white;
+    color: black;
     font-size: xx-large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 5px;
 }
 .SegregatedFundLead{
-    text-align: left;
-    color: white;
+    text-align: center;
+    color: black;
     font-size: x-large;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
 }
 .mainrow{
-    display: flex;
+    
     color: white;
-    font-size: medium;
-
+    font-size: large;
+}
+.label{
+    font-weight: bold;
+}
+.example-button-row button,
+.example-button-row a {
+    background-color: #9acb3c;
+    margin-bottom: 15px;
+}
+.submit-button{
+    float: right;
 }

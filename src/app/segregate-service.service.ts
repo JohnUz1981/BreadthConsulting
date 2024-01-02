@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SegregatedwhysInputs } from './segregatedwhys-class';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SegregateServiceService {
+  postSegregatedFundResults(segData: SegregatedwhysInputs | undefined) {
+    throw new Error('Method not implemented.');
+  }
+  private apiUrl = 'https://localhost:7284/api/SegFund';
 
   public segregatedwhysdata = new BehaviorSubject<SegregatedwhysInputs>({
     currentDate:'',
@@ -34,7 +39,7 @@ export class SegregateServiceService {
     purchaseVerificationCheckbox:'',
     OtherInvestmentPurpose:'',
 });
-  constructor() {
+  constructor(private http: HttpClient) {
     console.log("service call");
     this.segregatedwhysdata.subscribe(console.log);
    }
@@ -42,5 +47,9 @@ export class SegregateServiceService {
    getSegregatedFundResults(){
       //console.log("service is calling");
       return this.segregatedwhysdata;
+    }
+
+    sendSegFundDataToDb(data: any) : Observable<any>{
+      return this.http.post<any>(`${this.apiUrl}/PostSegFundData`, data);
     }
 }

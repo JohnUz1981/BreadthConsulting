@@ -1,7 +1,7 @@
 <div class="container">
     <div class="form-page">
         <div class="titlepage">
-            <p> Reason Why Segregated Funds</p>
+            <p> Segregated Funds</p>
         </div>
         <form #myForm="ngForm" (ngSubmit)="getSegregatedFundResults()" (load)="log(myForm)">
             <div class="row" style="padding-top: 25px">
@@ -28,21 +28,6 @@
                 </div>
                 <div class="col"></div>
             </div>
-            <div class="row">
-                <div class="col checkbox">
-                    <label class="checkbox-label">This summary is intended to highlight key information about your
-                        recent
-                        purchase. Based on our discussions you purchased the following product:</label><br>
-                    <div class="SegregatedFundCheckbox">
-                        <input class="form-check-input" type="checkbox" value="" id="SegregatedFundCheckbox_id"
-                            [(ngModel)]="inputClass.aggreeToSegFundchecked" #aggreeToSegFundchecked="ngModel"
-                            (change)="log(myForm)" required name="SegregatedFundCheckbox">
-                        <label class="SegregatedFundCheckboxLabel">Segregated Funds</label>
-                    </div>
-                    <div class="error" *ngIf="!aggreeToSegFundchecked.valid && aggreeToSegFundchecked.touched">*You
-                        missed a checkbox</div>
-                </div>
-            </div>
             <div class="row section-3">
                 <div class="col">
                     <label>Carrier:</label>
@@ -53,14 +38,6 @@
                         </option>
                     </select>
                     <div class="error" *ngIf="carrierInput.touched && !carrierInput.valid">*Please select a Carrier.
-                    </div>
-                </div>
-                <div class="col">
-                    <label>Investment Amount:</label>
-                    <input type="number" class="form-control" placeholder="Enter Amount" [(ngModel)]="inputClass.amount"
-                        #investmentAmountInput="ngModel" name="investmentAmount" required>
-                    <div class="error" *ngIf="investmentAmountInput.touched && !investmentAmountInput.valid">*Please
-                        enter Investment Amount.
                     </div>
                 </div>
                 <div class="col">
@@ -75,8 +52,6 @@
                         maturity date.
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col">
                     <label>Death Benefit Guarantee:</label>
                     <select class="form-control" [(ngModel)]="inputClass.deathPercentage" #deathBeneifitInput="ngModel"
@@ -89,6 +64,9 @@
                         maturity date.
                     </div>
                 </div>
+            </div>
+            <div class="row">
+
                 <div class="col">
                     <label>Sales Charge options:</label>
                     <select class="form-control" [(ngModel)]="inputClass.salescharge" #saleChargeOptionsInput="ngModel"
@@ -121,18 +99,17 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="Summarized-section">
                 <label>Summarized from our discussion, here are the key facts about your situation:</label>
             </div>
             <div class="row">
                 <div class="col">
-                    <label>Amount:</label>
-                    <select class="form-control" [(ngModel)]="inputClass.amountSelect" #investmentAmountInput1="ngModel" name="selectedAmount" required>
-                        <option *ngFor="let amountInfo of amount" [value]="amountInfo.amount">
-                            {{ amountInfo.amount}}
-                        </option>
-                    </select>
-                    <div class="error" *ngIf="investmentAmountInput1.touched && !investmentAmountInput1.valid">*Please enter Investment amount.
+                    <label>Investment Amount:</label>
+                    <input type="number" class="form-control" placeholder="Enter Amount" [(ngModel)]="inputClass.amount"
+                        #investmentAmountInput="ngModel" name="investmentAmount" required>
+                    <div class="error" *ngIf="investmentAmountInput.touched && !investmentAmountInput.valid">*Please
+                        enter Investment Amount.
                     </div>
                 </div>
                 <div class="col">

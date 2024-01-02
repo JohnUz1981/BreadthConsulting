@@ -1,50 +1,87 @@
-<div class="container-fluid">
+<div class="container">
    <div class="container SegregatedFundSummary">
       <div class="SegregatedFundSummary">
-         <h1 class="SegregatedFundHeader">Reasons Why Segregated Funds</h1>
-         <p class="SegregatedFundLead">Summary:</p>
+         <h1 class="SegregatedFundHeader">Segregated Funds</h1>
+         <p class="SegregatedFundLead">Summary</p>
       </div>
-      <div class="mainrow">
-         <div class="col">
-            <label for="date">Date:</label>
-            <p>{{segData!.currentDate}}</p>
+      <hr>
+      <form #myForm="ngForm" (ngSubmit)="sendSegDataDb()">
+         <div class="mainrow">
+            <div class="row section-3">
+               <div class="col">
+                  <label for="date">Date:</label>
+                  <p>
+                     {{segData!.currentDate}}
+                  
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Client Name:</label>
+                  <p>
+                     {{segData!.clientName}}
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Advisor:</label>
+                  <p>
+                     {{segData!.advisors}}
+                  </p>
+               </div>
+            </div>
+            <div class="row section-3">
+               <div class="col">
+                  <label for="date">Carrier:</label>
+                  <p>
+                     {{segData!.carrier}}
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Sales Charge options:</label>
+                  <p>
+                     {{segData!.salescharge}}
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Investment Percentage:</label>
+                  <p>
+                     {{segData!.commissionPercent}}
+                  </p>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col">
+                  <label for="date">Time Horizon:</label>
+                  <p>
+                     {{segData!.selectedTimeHorizon}} 
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Investment Amount:</label>
+                  <p>
+                     {{segData!.selectedTimeHorizon}} 
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Risk Tolerance:</label>
+                  <p>
+                     {{segData!.risktoleranceSelect}}
+                  </p>
+               </div>
+               <div class="col">
+                  <label for="date">Investment Purpose:</label>
+                  <p>
+                    {{segData!.investmentPurposeSelect}}
+                  </p>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="example-button-row" role="group" aria-label="Basic example">
+                     <button mat-raised-button class="back-button">Back</button>
+                     <button mat-raised-button class="submit-button">Submit</button>
+                  </div>
+               </div>
+            </div>
          </div>
-         <div class="col">
-            <label for="date">Client Name:</label>
-            <p>{{segData!.clientName}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Advisor:</label>
-            <p>{{segData!.advisors}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Carrier:</label>
-            <p>{{segData!.carrier}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Sales Charge options:</label>
-            <p>{{segData!.salescharge}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Investment Percentage:</label>
-            <p>{{segData!.commissionPercent}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Time Horizon:</label>
-            <p>{{segData!.selectedTimeHorizon}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Amount:</label>
-            <p>{{segData!.amountSelect}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Risk Tolerance:</label>
-            <p>{{segData!.risktoleranceSelect}}</p>
-         </div>
-         <div class="col">
-            <label for="date">Investment Purpose:</label>
-            <p>{{segData!.investmentPurposeSelect}}</p>
-         </div>
-      </div>
+      </form>
    </div>
 </div>

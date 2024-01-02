@@ -1,0 +1,28 @@
+
+table {
+    width: 100%;
+  }
+.SegdataTable,
+.mat-mdc-table{
+  margin-top: 25px;
+  background-color: white
+}
+
+.mat-mdc-header-row{
+  color: black;
+}
+.mat-mdc-row{
+  color: black;
+}
+.mat-cell,
+.mat-header-cell {
+  border: 3px solid #000000; 
+}
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
