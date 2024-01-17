@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SegregatedwhysInputs } from '../segregatedwhys-class';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { SegregateServiceService } from '../segregate-service.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -64,8 +64,8 @@ export class SegregatedFundResultsComponent implements OnInit {
           });
           this.router.navigate(['/segregated-fund-list']);
         },
-        (error: any) => {
-          console.error("POST error ----->", error);
+        (error: HttpErrorResponse) => {
+          console.error(`Error: ${error.message}`);
           Swal.fire({
             position: "top-end",
             icon: "error",
@@ -77,4 +77,5 @@ export class SegregatedFundResultsComponent implements OnInit {
       );
     });
   }
+  
 }

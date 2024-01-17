@@ -1,4 +1,5 @@
 export class SegregatedwhysInputs {
+    public id: string | undefined;
     public currentDate: string | undefined;
     public clientName: string | undefined;
     public advisors: string | undefined;

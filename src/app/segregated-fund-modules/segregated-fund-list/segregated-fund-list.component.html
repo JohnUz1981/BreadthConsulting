@@ -1,8 +1,8 @@
-<div class="container SegdataTable">
+<div class="container">
     <mat-form-field>
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-      </mat-form-field> 
+    </mat-form-field>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
         <ng-container matColumnDef="segfunds_advisor">
             <th mat-header-cell *matHeaderCellDef> Advisor </th>
@@ -16,7 +16,21 @@
             <th mat-header-cell *matHeaderCellDef> Created Date </th>
             <td mat-cell *matCellDef="let element"> {{element.segfunds_createdDate}} </td>
         </ng-container>
+        <ng-container matColumnDef="segFunds_id">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element" >
+                <button mat-raised-button color="primary" (click)="openDialog('300ms', '150ms')">View</button>
+            </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+</div>
+<h1 mat-dialog-title>Delete file</h1>
+<div mat-dialog-content>
+  Would you like to delete cat.jpeg?
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
 </div>

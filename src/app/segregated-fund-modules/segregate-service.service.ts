@@ -14,6 +14,7 @@ export class SegregateServiceService {
   private apiUrl = 'https://localhost:7284/api/SegFund';
 
   public segregatedwhysdata = new BehaviorSubject<SegregatedwhysInputs>({
+    id: undefined,
     currentDate:'',
     clientName:'',
     advisors:'',

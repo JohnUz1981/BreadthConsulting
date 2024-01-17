@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import * as jsPDF from 'jspdf';
-import { ServicesService } from '../services/services.service';
+import { ServicesService } from '../../services/services.service';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +18,10 @@ import {SegregatedwhysInputs} from '../segregatedwhys-class'
 import { SegregateServiceService } from '../segregate-service.service';
 
 
+interface Id{
+  value: any
+  name: number
+}
 
 interface Advisor {
   name: string;
@@ -95,6 +99,7 @@ SegregatedFundFormValidation: any;
   }
    
   inputClass: SegregatedwhysInputs = {
+    id:'',
     currentDate:'',
     clientName:'',
     advisors:'',
@@ -123,8 +128,8 @@ SegregatedFundFormValidation: any;
   };
 
 
-
-  currentDate:string | undefined
+  id: string | undefined;
+  currentDate:string | undefined;
   clientName: string | undefined;
   advisors: Advisor[] = [];
   selectedAdvisor: string | undefined;

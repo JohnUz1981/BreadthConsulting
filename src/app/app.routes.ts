@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
-import { ReasonsWhySegregatedFundComponent } from './reasons-why-segregated-fund/reasons-why-segregated-fund.component';
-import { SegregatedFundResultsComponent } from './segregated-fund-results/segregated-fund-results.component';
-import { SegregatedFundListComponent } from './segregated-fund-list/segregated-fund-list.component';
+import { ReasonsWhySegregatedFundComponent } from './segregated-fund-modules/reasons-why-segregated-fund/reasons-why-segregated-fund.component';
+import { SegregatedFundResultsComponent } from './segregated-fund-modules/segregated-fund-results/segregated-fund-results.component';
+import { SegregatedFundListComponent } from './segregated-fund-modules/segregated-fund-list/segregated-fund-list.component';
 
 
 
