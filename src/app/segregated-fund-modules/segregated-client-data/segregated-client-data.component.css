@@ -1,0 +1,36 @@
+button {
+    margin-right: 8px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+.letterhead {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.letterhead h1 {
+    margin: 0;
+    color: #333;
+}
+
+.letterhead p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.content {
+    line-height: 1.5;
+    color: #444;
+}
+
+.signature {
+    margin-top: 20px;
+}
+
+.signature p {
+    margin: 0;
+    font-weight: bold;
+}

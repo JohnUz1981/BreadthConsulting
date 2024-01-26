@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import {SegregatedwhysInputs} from '../segregatedwhys-class'
 import { SegregateServiceService } from '../segregate-service.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 interface Id{
@@ -60,6 +61,13 @@ interface TimeHorizon{
   viewValue: string;
 }
 
+interface InventmentOptionsInterface{
+
+  name: string;
+  value: any; 
+  viewValue: string;
+}
+
 @Component({
   providers: [],
   selector: 'app-reasons-why-segregated-fund',
@@ -82,16 +90,23 @@ interface TimeHorizon{
     MatRadioModule,
     JsonPipe,
     ReactiveFormsModule,
+    NgSelectModule,
   ],
   templateUrl: './reasons-why-segregated-fund.component.html',
   styleUrls: ['./reasons-why-segregated-fund.component.css']
 })
 
 export class ReasonsWhySegregatedFundComponent implements OnInit {
+
 SegregatedFundFormValidation: any;
+i: any;
+section: any;
+  InvestmentPercent: any;
   log(x: any){
     console.log(x)
+
   }
+
 
   constructor(private segService: SegregateServiceService, private http: HttpClient, private ServicesService: ServicesService,
     private _formBuilder: FormBuilder, private router: Router) {
@@ -124,7 +139,7 @@ SegregatedFundFormValidation: any;
     selectedTimeHorizon:'',
     purchaseVerificationCheckbox:'',
     OtherInvestmentPurpose:'',
-    
+       
   };
 
 
@@ -153,7 +168,7 @@ SegregatedFundFormValidation: any;
   risktoleranceSelect: Risktolerance[] = [];
   timeHorizon: any | undefined;
   selectedTimeHorizon: TimeHorizon[] = [];
-
+  investmentoption: InventmentOptionsInterface[] = [];
 
 //aggreeToSegFundchecked: boolean = false;
 inputValue: string = '';
@@ -177,11 +192,28 @@ getSegregatedFundResults(){
   
   currencyControl = new FormControl('', [Validators.required]);
 
- 
+  sections: Array<any> = [];
 
+  // addSection() {
+  //   this.sections.push({ field1: '', field2: '' });
+  // }
+
+  // removeSection(index: number) {
+  //   this.sections.splice(index, 1);
+  // }
+
+  addSection() {
+    this.sections.push({ field1: '', field2: '' });
+    this.sections = [...this.sections]; 
+  }
+
+  removeSection(index: number) {
+    this.sections.splice(index, 1);
+  }
   ngOnInit(): void {
 
-
+ 
+ 
   
     this.inputClass.currentDate = this.getCurrentDate();
 
@@ -198,7 +230,15 @@ getSegregatedFundResults(){
         console.error('Error fetching user info:', error);
       }
     );
+
+
+  
     
+      this.ServicesService.getInvestmentOptions().subscribe((investmentoptionData:any)=>{
+        this.InvestmentPercent = investmentoptionData;
+  })
+
+
 
       this.ServicesService.getCarrier().subscribe((carrierData: any) => {
         this.carrier = carrierData;
@@ -263,5 +303,4 @@ getSegregatedFundResults(){
 
   }
 }
-
 

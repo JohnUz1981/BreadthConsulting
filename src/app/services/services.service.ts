@@ -19,6 +19,12 @@ export class ServicesService {
   investmentpurpose: any = './json/investmentpurpose.json';
   risktolerance: any = './json/risktolerance.json';
   timeHorizon: any = './json/timehorizon.json';
+  investmentoptions: any = './json/investmentoptions.json';
+
+
+  getInvestmentOptions(){
+    return this.http.get(this.investmentoptions);
+  }
 
   getUserInfo() {
     return this.http.get(this.userinfo);

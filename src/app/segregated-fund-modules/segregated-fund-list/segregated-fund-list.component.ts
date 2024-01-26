@@ -18,6 +18,7 @@ import {
   MatDialogContent,
 }from '@angular/material/dialog';
 import { SegregatedFundResultsComponent } from '../segregated-fund-results/segregated-fund-results.component';
+import { SegregatedClientDataComponent } from '../segregated-client-data/segregated-client-data.component';
 @Component({
   selector: 'app-segregated-fund-list',
   standalone: true,
@@ -55,13 +56,15 @@ export class SegregatedFundListComponent {
   element: any;
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(SegregatedFundResultsComponent, {
-      height: '400px',
-      width: '800px',
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, data: any): void {
+    this.dialog.open(SegregatedClientDataComponent, {
+      height: 'auto',
+      width: '1000px',
+      data: { CleintData: data },
       enterAnimationDuration,
       exitAnimationDuration,
     });
+    console.log("MODAL DATA---->", data);
   }
 
   applyFilter(event: Event) {
@@ -83,6 +86,7 @@ export class SegregatedFundListComponent {
     console.log("Client record Id----->", segFundsId);
     this.http.get<SegregatedFundListComponent[]>(`https://localhost:7284/api/SegFund/GetData/${segFundsId}`).subscribe(SegCleintInfo => {
       console.log(SegCleintInfo)
+      this.openDialog('300ms', '150ms', SegCleintInfo);
     })
   }
 }

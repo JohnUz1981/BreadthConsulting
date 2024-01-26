@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'reasons-why-segregated-fund', component: ReasonsWhySegregatedFundComponent },
     { path: 'segregated-fund-results', component: SegregatedFundResultsComponent},
-    {path: 'segregated-fund-list', component: SegregatedFundListComponent}
+    { path: 'segregated-fund-list', component: SegregatedFundListComponent}
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

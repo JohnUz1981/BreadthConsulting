@@ -1,1 +1,59 @@
-<p>segregated-client-data works!</p>
+<div mat-dialog-content>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Breadth Consulting</title>
+  </head>
+  <body>
+  
+      <div class="letterhead">
+        <img src="../assets/images/Color_Logo_Breadth-hor.png" width="250">
+          <p>1608 Sylvestre Drive, Unit 5</p>
+          <p>Tecumseh, Ontario, N9K OB9</p>
+          <p>Email: <a href="mailto:info&#64;example.com">pdufour&#64;breadthconsulting.com</a> | Office: 519-966-4400 | Cell: 519-790-9321</p>
+          <p>breadthconsulting.com</p>
+      </div>
+            
+      <div class="content">
+          <p>Date: {{ currentDate }}</p>
+
+  
+          <p><b>{{data.CleintData.segfunds_clientName }}</b>,
+
+            Based on my review of your needs and subsequent recommendation, you purchased a <b>{{data.CleintData.segfunds_carrier}}</b>
+            segregated fund (CDN Dividend) for 25%, (US Dividend) for 25%, (Global Growth Equity)
+            20%, (Science and Tech) 10%, (Emerging Markets Equity) 10% and (Global Resource) 10%. When
+            we met, you indicated you wanted to invest in the equity market but didn't feel comfortable
+            with the risk that goes with investing in mutual funds. Instead, you said you wanted to put your
+            money in a segregated fund for all 3 accounts. Accounts will be transferred from RBC<br><br>
+            
+            This segregated fund products you purchased has the basic (100%) death and (75%) maturity
+            guarantees and this means the most you can lose is 25% of your investment at maturity and 0%
+            at death. This guarantee applies if you keep your money invested in the contract until it matures
+            or you die. As we discussed, if you need to withdraw money before then and the market value is
+            down, the value of your investment will be down by the same amount.
+            This contract has different fee options. You selected the no-load option with a fee of 1.00%
+            because you wanted all your money invested up front.<br><br>
+            
+            If any of this information about you or your needs is not correct, please let me know right away.
+            If you have any questions about the policy or your investments, don't hesitate to ask me now or
+            at any time in the future. You should also keep this letter with your personal papers as a
+            reminder of why you purchased the policy.</p>
+  
+          <div class="signature">
+              <p>Sincerely,</p>
+              <img src="../../../assets/images/paulDufourSig.png" width="175">
+              <p>{{data.CleintData.segfunds_advisor}}</p>
+          </div>
+      </div>
+  
+  </body>
+  </html>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close color="warn">Close</button>
+  <button mat-stroked-button color="primary">Export</button>
+</div>

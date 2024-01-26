@@ -121,3 +121,13 @@ td {
     color: white;
     font-size: large;
 }
+.ng-select.dropdown ::ng-deep .ng-select-container  {            
+    min-height: 0px;
+    border-radius: 10;
+    background-color: #343A40;
+    color: white;    
+}
+.ng-select.dropdown ::ng-deep .ng-dropdown-panel  {            
+    background-color: #343A40;
+    color: white;    
+}
