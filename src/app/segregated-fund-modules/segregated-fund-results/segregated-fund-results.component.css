@@ -24,11 +24,12 @@
 .label{
     font-weight: bold;
 }
-.example-button-row button,
-.example-button-row a {
-    background-color: #9acb3c;
-    margin-bottom: 15px;
-}
-.submit-button{
-    float: right;
-}
+.example-button-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 82px;
+  }
+  
+  .submit-button {
+   padding-top: 82px; 
+  }

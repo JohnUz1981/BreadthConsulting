@@ -1,9 +1,9 @@
 [
-    {"investmentoption": "CDN Dividend"},
-    {"investmentoption": "US Dividend"},
-    {"investmentoption": "Global Growth Equity"},
-    {"investmentoption": "Science and Tech"},
-    {"investmentoption": "Emerging Markets Equity"},
-    {"investmentoption": "Global Resource"}
+    {"key": "cdn-dividend", "value": "CDN Dividend"},
+    {"key": "us-dividend", "value": "US Dividend"},
+    {"key": "global-growth-equity", "value": "Global Growth Equity"},
+    {"key": "science-and-tech", "value": "Science and Tech"},
+    {"key": "emerging-markets-equity", "value": "Emerging Markets Equity"},
+    {"key": "global-resource", "value": "Global Resource"}
 
 ]

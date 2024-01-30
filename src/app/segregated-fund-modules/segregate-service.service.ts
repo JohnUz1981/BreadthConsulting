@@ -39,6 +39,7 @@ export class SegregateServiceService {
     selectedTimeHorizon:'',
     purchaseVerificationCheckbox:'',
     OtherInvestmentPurpose:'',
+    investmentOptionfield10:'',
 });
   constructor(private http: HttpClient) {
     console.log("service call");

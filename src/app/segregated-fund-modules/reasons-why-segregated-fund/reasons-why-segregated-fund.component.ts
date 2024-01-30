@@ -14,19 +14,19 @@ import { ServicesService } from '../../services/services.service';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import {SegregatedwhysInputs} from '../segregatedwhys-class'
+import { SegregatedwhysInputs } from '../segregatedwhys-class'
 import { SegregateServiceService } from '../segregate-service.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
-interface Id{
+interface Id {
   value: any
   name: number
 }
 
 interface Advisor {
   name: string;
-  value: any; 
+  value: any;
   viewValue: string;
 }
 
@@ -42,29 +42,29 @@ interface SalesCharge {
 interface Amounts {
   amount: string;
 }
-interface Maturity{
+interface Maturity {
   maturityDate: any;
 }
-interface InvestmentPurpose{
+interface InvestmentPurpose {
   name: string;
-  value: any; 
+  value: any;
   viewValue: string;
 }
-interface Risktolerance{
+interface Risktolerance {
   name: string;
-  value: any; 
+  value: any;
   viewValue: string;
 }
-interface TimeHorizon{
+interface TimeHorizon {
   name: string;
-  value: any; 
+  value: any;
   viewValue: string;
 }
 
-interface InventmentOptionsInterface{
+interface InventmentOptionsInterface {
 
   name: string;
-  value: any; 
+  value: any;
   viewValue: string;
 }
 
@@ -98,11 +98,11 @@ interface InventmentOptionsInterface{
 
 export class ReasonsWhySegregatedFundComponent implements OnInit {
 
-SegregatedFundFormValidation: any;
-i: any;
-section: any;
+  SegregatedFundFormValidation: any;
+  i: any;
+  section: any;
   InvestmentPercent: any;
-  log(x: any){
+  log(x: any) {
     console.log(x)
 
   }
@@ -112,39 +112,40 @@ section: any;
     private _formBuilder: FormBuilder, private router: Router) {
 
   }
-   
+
   inputClass: SegregatedwhysInputs = {
-    id:'',
-    currentDate:'',
-    clientName:'',
-    advisors:'',
-    carrier:'',
-    selectedCarrier:'',
-    aggreeToSegFundchecked:'',
+    id: '',
+    currentDate: '',
+    clientName: '',
+    advisors: '',
+    carrier: '',
+    selectedCarrier: '',
+    aggreeToSegFundchecked: '',
     indeterminate: '',
-    disabled:'',
-    salescharge:'',
-    investmentPurpose:'',
-    investmentPurposeSelect:'',
-    commissionPercent:'',
-    selectedCharge:'',
-    amount:'',
-    amountSelect:'',
-    maturity:'',
-    selectedMaturity:'',
-    deathPercentage:'',
-    selectedDeathPercentage:'',
-    risktolerance:'',
-    risktoleranceSelect:'',
-    selectedTimeHorizon:'',
-    purchaseVerificationCheckbox:'',
-    OtherInvestmentPurpose:'',
-       
+    disabled: '',
+    salescharge: '',
+    investmentPurpose: '',
+    investmentPurposeSelect: '',
+    commissionPercent: '',
+    selectedCharge: '',
+    amount: '',
+    amountSelect: '',
+    maturity: '',
+    selectedMaturity: '',
+    deathPercentage: '',
+    selectedDeathPercentage: '',
+    risktolerance: '',
+    risktoleranceSelect: '',
+    selectedTimeHorizon: '',
+    purchaseVerificationCheckbox: '',
+    OtherInvestmentPurpose: '',
+    investmentOptionfield10: '',
+
   };
 
 
   id: string | undefined;
-  currentDate:string | undefined;
+  currentDate: string | undefined;
   clientName: string | undefined;
   advisors: Advisor[] = [];
   selectedAdvisor: string | undefined;
@@ -170,51 +171,34 @@ section: any;
   selectedTimeHorizon: TimeHorizon[] = [];
   investmentoption: InventmentOptionsInterface[] = [];
 
-//aggreeToSegFundchecked: boolean = false;
-inputValue: string = '';
-otherValue: any;
+  //aggreeToSegFundchecked: boolean = false;
+  inputValue: string = '';
+  otherValue: any;
 
-toggleInputField() {
-  this.aggreeToSegFundchecked = this.aggreeToSegFundchecked;
-  console.log(this.aggreeToSegFundchecked);
-}
+  toggleInputField() {
+    this.aggreeToSegFundchecked = this.aggreeToSegFundchecked;
+    console.log(this.aggreeToSegFundchecked);
+  }
 
-getSegregatedFundResults(){
-  this.segService.segregatedwhysdata.next(this.inputClass!);
-  console.log("Parent---->",this.inputClass);
-  this.router.navigate(['/segregated-fund-results']);
-}
+  getSegregatedFundResults() {
+    this.segService.segregatedwhysdata.next(this.inputClass!);
+    console.log("Parent---->", this.inputClass);
+    this.router.navigate(['/segregated-fund-form']);
+  }
 
 
-   getCurrentDate(): string{
+  getCurrentDate(): string {
     return new Date().toISOString().split('T')[0];
   }
-  
+
   currencyControl = new FormControl('', [Validators.required]);
 
-  sections: Array<any> = [];
 
-  // addSection() {
-  //   this.sections.push({ field1: '', field2: '' });
-  // }
-
-  // removeSection(index: number) {
-  //   this.sections.splice(index, 1);
-  // }
-
-  addSection() {
-    this.sections.push({ field1: '', field2: '' });
-    this.sections = [...this.sections]; 
-  }
-
-  removeSection(index: number) {
-    this.sections.splice(index, 1);
-  }
   ngOnInit(): void {
 
- 
- 
-  
+
+
+
     this.inputClass.currentDate = this.getCurrentDate();
 
     this.ServicesService.getUserInfo().subscribe(
@@ -232,44 +216,37 @@ getSegregatedFundResults(){
     );
 
 
-  
-    
-      this.ServicesService.getInvestmentOptions().subscribe((investmentoptionData:any)=>{
-        this.InvestmentPercent = investmentoptionData;
-  })
 
-
-
-      this.ServicesService.getCarrier().subscribe((carrierData: any) => {
-        this.carrier = carrierData;
-        //console.log('Carrier data', this.carrier);
-      }),
+    this.ServicesService.getCarrier().subscribe((carrierData: any) => {
+      this.carrier = carrierData;
+      //console.log('Carrier data', this.carrier);
+    }),
 
       this.ServicesService.getSalesCharge().subscribe((salesChargeData: SalesCharge[] | Object) => {
-        if(Array.isArray(salesChargeData)){
+        if (Array.isArray(salesChargeData)) {
           this.salescharge = salesChargeData;
           console.log('SaleCharge--->', this.salescharge);
         } else {
           // Handle other cases if needed
         }
       },
+        (error: any) => {
+          console.error('Error fetching user info:', error);
+        }
+      );
+
+    this.ServicesService.getInvestmentPurpose().subscribe((investmentPurposeData: InvestmentPurpose[] | Object) => {
+      if (Array.isArray(investmentPurposeData)) {
+        this.investmentpurpose = investmentPurposeData;
+        console.log(investmentPurposeData);
+      } else {
+
+      }
+    },
       (error: any) => {
         console.error('Error fetching user info:', error);
       }
     );
-     
-   this.ServicesService.getInvestmentPurpose().subscribe((investmentPurposeData: InvestmentPurpose[] | Object) =>{
-    if(Array.isArray(investmentPurposeData)){
-      this.investmentpurpose = investmentPurposeData;
-      console.log(investmentPurposeData);
-    }else{
-
-    }
-  },
-  (error: any) => {
-    console.error('Error fetching user info:', error);
-  }
-  );
     this.ServicesService.getRisktolerance().subscribe((risktoleranceData: Risktolerance[] | object) => {
       if (Array.isArray(risktoleranceData)) {
         this.risktolerance = risktoleranceData;
@@ -291,11 +268,11 @@ getSegregatedFundResults(){
       console.log(maturityData);
       this.maturity = maturityData;
     })
-    this.ServicesService.getDeathPercent().subscribe((deathPercent: any) =>{
+    this.ServicesService.getDeathPercent().subscribe((deathPercent: any) => {
       console.log(deathPercent);
       this.deathPercentage = deathPercent
     })
-    this.ServicesService.getTimeHorizon().subscribe((timeHorizondata: any) =>{
+    this.ServicesService.getTimeHorizon().subscribe((timeHorizondata: any) => {
       console.log(timeHorizondata);
       this.timeHorizon = timeHorizondata
     })

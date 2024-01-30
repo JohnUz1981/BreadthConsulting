@@ -1,0 +1,42 @@
+<div>
+  <div class="container">
+    <div class="form-page">
+      <div class="titlepage">
+        <h1> Segregated Funds</h1>
+      </div>
+      <form [formGroup]="FormData" role="form" (ngSubmit)="OnSubmit(FormData.value)">
+        <p style="font-size: larger;">How would you like to divide up your investment?</p>
+        <!-- Update formArrayName to match the name used in your component -->
+        <div formArrayName="investmentBreakdown">
+          <div *ngFor="let data of SendInvestmentBreakdownData(); let i = index">
+            <div class="row investmentFieldGroup" [formGroupName]="i" style="padding-top: 15px;">
+              <div class="col">
+                <select class="form-control" formControlName="investmentOptionfield">
+                  <option value="none" selected disabled aria-placeholder="Select One">Select an Option</option>
+                  <option *ngFor="let investmentOption of investmentbreakDown">
+                    {{investmentOption.value}}
+                  </option>
+                </select>
+              </div>
+              <div class="col">
+                <input class="form-control" formControlName="investmentPercentfield">
+              </div>
+              <div class="col">
+                <button mat-raised-button color="warn" (click)="deleteItem(i)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="addButton">
+      <button mat-raised-button color="primary" (click)="additem()">Add</button>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="example-button-row" role="group" aria-label="Basic example">
+        <button mat-raised-button color="warn" class="back-button">Back</button>
+        <button mat-raised-button color="warn">Submit</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

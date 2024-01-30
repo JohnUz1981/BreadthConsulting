@@ -148,39 +148,6 @@
                 </div>
             </div>
             <hr>
-            <div *ngFor="let section of sections; let i = index">
-                <div class="row">
-                    <div class="col">
-                        <label for="field1{{ i }}">Field 1:</label>
-                        <ng-select
-                          class="form-control"
-                          [(ngModel)]="section.field1"
-                          name="field1{{ i }}"
-                          [searchable]="true">
-                          <ng-option *ngFor="let InvestmentOptionInfo of InvestmentPercent" [value]="InvestmentOptionInfo.investmentoption">
-                            {{ InvestmentOptionInfo.investmentoption }}
-                          </ng-option>
-                        </ng-select>
-                      </div>
-                    <div class="col">
-                        <label for="field2{{ i }}">Field 2:</label>
-                        <input type="text" class="form-control" id="field2{{ i }}" [(ngModel)]="section.field2"
-                            name="field2{{ i }}" />
-                    </div>
-                    <div class="col">
-                        <label></label><br>
-                        <button type="button" class="btn btn-md btn-danger"
-                            (click)="removeSection(i)">Remove</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                  <label></label><br>
-                  <button type="button" class="btn btn-md btn-success" (click)="addSection()">Add</button>
-                </div>
-              </div>
-            <hr>
             <div class="row">
                 <div class="col purchaseVerificationCheckbox">
                     <label for="purchaseVerification">You purchased the product because:</label><br>
