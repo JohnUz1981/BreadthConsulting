@@ -4,7 +4,77 @@
       <div class="titlepage">
         <h1> Segregated Funds</h1>
       </div>
-      <form [formGroup]="FormData" role="form" (ngSubmit)="OnSubmit(FormData.value)">
+      <form [formGroup]="FormData" role="form" (ngSubmit)="sendSegDataDb()">
+        <hr>
+        <div class="mainrow">
+          <div class="row section-3">
+            <div class="col">
+              <label for="date">Date:</label>
+              <p>
+                {{segData!.currentDate}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Client Name:</label>
+              <p>
+                {{segData!.clientName}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Advisor:</label>
+              <p>
+                {{segData!.advisors}}
+              </p>
+            </div>
+          </div>
+          <div class="row section-3">
+            <div class="col">
+              <label for="date">Carrier:</label>
+              <p>
+                {{segData!.carrier}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Sales Charge options:</label>
+              <p>
+                {{segData!.salescharge}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Investment Percentage:</label>
+              <p>
+                {{segData!.commissionPercent}}
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="date">Time Horizon:</label>
+              <p>
+                {{segData!.selectedTimeHorizon}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Investment Amount:</label>
+              <p>
+                {{segData!.selectedTimeHorizon}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Risk Tolerance:</label>
+              <p>
+                {{segData!.risktoleranceSelect}}
+              </p>
+            </div>
+            <div class="col">
+              <label for="date">Investment Purpose:</label>
+              <p>
+                {{segData!.investmentPurposeSelect}}
+              </p>
+            </div>
+            <hr>
+          </div>
+        </div>
         <p style="font-size: larger;">How would you like to divide up your investment?</p>
         <!-- Update formArrayName to match the name used in your component -->
         <div formArrayName="investmentBreakdown">
@@ -22,21 +92,21 @@
                 <input class="form-control" formControlName="investmentPercentfield">
               </div>
               <div class="col">
-                <button mat-raised-button color="warn" (click)="deleteItem(i)">Remove</button>
+                <button  type="button" mat-raised-button color="warn" (click)="deleteItem(i)">Remove</button>
               </div>
             </div>
           </div>
         </div>
-    <div class="addButton">
-      <button mat-raised-button color="primary" (click)="additem()">Add</button>
+        <div class="addButton">
+          <button  type="button" mat-raised-button color="primary" (click)="additem()">Add</button>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="example-button-row" role="group" aria-label="Basic example">
+            <button mat-raised-button color="warn" class="back-button">Back</button>
+            <button mat-raised-button color="warn">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <hr>
-    <div class="row">
-      <div class="example-button-row" role="group" aria-label="Basic example">
-        <button mat-raised-button color="warn" class="back-button">Back</button>
-        <button mat-raised-button color="warn">Submit</button>
-      </div>
-    </div>
-    </form>
   </div>
-</div>

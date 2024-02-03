@@ -139,7 +139,7 @@ export class ReasonsWhySegregatedFundComponent implements OnInit {
     selectedTimeHorizon: '',
     purchaseVerificationCheckbox: '',
     OtherInvestmentPurpose: '',
-    investmentOptionfield10: '',
+    investmentbreakDown: '',
 
   };
 

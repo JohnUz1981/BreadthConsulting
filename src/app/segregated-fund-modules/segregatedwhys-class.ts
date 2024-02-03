@@ -26,7 +26,7 @@ export class SegregatedwhysInputs {
     public purchaseVerificationCheckbox: string | undefined;
     public OtherInvestmentPurpose: string | undefined;
       static segDataClass: string | undefined;
-    public investmentOptionfield10: string | undefined;
+    public investmentbreakDown: string | undefined;
 }
 
 

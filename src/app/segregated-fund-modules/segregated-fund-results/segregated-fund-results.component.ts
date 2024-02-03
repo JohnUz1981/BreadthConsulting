@@ -29,7 +29,7 @@ export class SegregatedFundResultsComponent implements OnInit {
   ngOnInit() : void {
     this.segService.getSegregatedFundResults().subscribe((segResultData: SegregatedwhysInputs) => {
       this.segData = segResultData;
-      console.log("getdata----->:", segResultData);
+      console.log("Form 1 Data----->:", segResultData);
     });
   }
 
