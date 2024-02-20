@@ -4,6 +4,7 @@ export class SegregatedwhysInputs {
     public currentDate: string | undefined;
     public clientName: string | undefined;
     public advisors: string | undefined;
+    public segfunds_investmentbreakDown: string | undefined;
     public carrier: string | undefined;
     public selectedCarrier: string | undefined;
     public aggreeToSegFundchecked: string | undefined;

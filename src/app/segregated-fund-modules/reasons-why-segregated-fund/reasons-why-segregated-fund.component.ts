@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { SegregatedwhysInputs } from '../segregatedwhys-class'
 import { SegregateServiceService } from '../segregate-service.service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxCurrencyDirective  } from 'ngx-currency';
 
 
 interface Id {
@@ -91,6 +92,7 @@ interface InventmentOptionsInterface {
     JsonPipe,
     ReactiveFormsModule,
     NgSelectModule,
+    NgxCurrencyDirective ,    
   ],
   templateUrl: './reasons-why-segregated-fund.component.html',
   styleUrls: ['./reasons-why-segregated-fund.component.css']
@@ -111,9 +113,11 @@ export class ReasonsWhySegregatedFundComponent implements OnInit {
   constructor(private segService: SegregateServiceService, private http: HttpClient, private ServicesService: ServicesService,
     private _formBuilder: FormBuilder, private router: Router) {
 
+      
   }
 
   inputClass: SegregatedwhysInputs = {
+    segfunds_investmentbreakDown: '',
     id: '',
     currentDate: '',
     clientName: '',

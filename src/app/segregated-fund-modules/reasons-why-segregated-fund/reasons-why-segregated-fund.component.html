@@ -64,6 +64,7 @@
                         maturity date.
                     </div>
                 </div>
+                <div class="col"></div>
             </div>
             <div class="row">
 
@@ -78,14 +79,16 @@
                         select a sales charge option.
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <label>Percentage :</label>
-                    <input type="number" class="form-control" [(ngModel)]="inputClass.commissionPercent"
+                    <input currencyMask class="form-control" 
+                        [options]="{prefix: '', allowNegative: false, allowZero: true, precision: 2, suffix: '%', max:100 }" dir="rtl"
+                        [(ngModel)]="inputClass.commissionPercent"
                         #investmentPercentage="ngModel" name="commissionPercent" id="commissionPercent" required>
                     <div class="error" *ngIf="investmentPercentage.touched && !investmentPercentage.valid">*Please enter
                         a Investment Percentage.
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                     <label>Time Horizon:</label>
                     <select class="form-control" [(ngModel)]="inputClass.selectedTimeHorizon"
@@ -99,6 +102,8 @@
                         Horizon.
                     </div>
                 </div>
+                <div class="col"></div>
+                <div class="col"></div>
             </div>
             <hr>
             <div class="Summarized-section">
@@ -107,7 +112,8 @@
             <div class="row">
                 <div class="col">
                     <label>Investment Amount:</label>
-                    <input type="number" class="form-control" placeholder="Enter Amount" [(ngModel)]="inputClass.amount"
+                    <input currencyMask class="form-control" placeholder="Enter Amount"  [options]="{ prefix: '$ ', thousands: ',', decimal: '.' }" 
+                        [(ngModel)]="inputClass.amount"
                         #investmentAmountInput="ngModel" name="investmentAmount" required>
                     <div class="error" *ngIf="investmentAmountInput.touched && !investmentAmountInput.valid">*Please
                         enter Investment Amount.

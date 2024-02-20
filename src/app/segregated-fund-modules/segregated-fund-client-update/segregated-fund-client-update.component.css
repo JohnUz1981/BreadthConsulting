@@ -1,0 +1,15 @@
+:host {
+    padding: 2px 4px;
+  }
+  :host[disabled='true'] {
+    pointer-events: none;
+    background: #F9F9F9;
+  }
+  :host:empty::before {
+    content: attr(placeholder);
+    color: #9D9D9D;
+  }
+  input{
+    border-width:0px;
+    border:none;
+  }

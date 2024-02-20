@@ -15,6 +15,7 @@ export class SegregateServiceService {
 
   public segregatedwhysdata = new BehaviorSubject<SegregatedwhysInputs>({
     id: undefined,
+    segfunds_investmentbreakDown: '',
     currentDate:'',
     clientName:'',
     advisors:'',

@@ -4,80 +4,71 @@
       <div class="titlepage">
         <h1> Segregated Funds</h1>
       </div>
-      <form [formGroup]="FormData" role="form" (ngSubmit)="sendSegDataDb()">
+      <form [formGroup]="FormData" (ngSubmit)="sendSegDataDb()" role="form">
         <hr>
         <div class="mainrow">
           <div class="row section-3">
             <div class="col">
               <label for="date">Date:</label>
-              <p>
-                {{segData!.currentDate}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_createdDate" [value]="segData?.currentDate" >
             </div>
             <div class="col">
               <label for="date">Client Name:</label>
-              <p>
-                {{segData!.clientName}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_clientName" [value]="segData?.clientName">
             </div>
             <div class="col">
               <label for="date">Advisor:</label>
-              <p>
-                {{segData!.advisors}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_advisor" [value]="segData?.advisors">
             </div>
           </div>
           <div class="row section-3">
             <div class="col">
               <label for="date">Carrier:</label>
-              <p>
-                {{segData!.carrier}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_carrier" [value]="segData?.carrier">
             </div>
             <div class="col">
               <label for="date">Sales Charge options:</label>
-              <p>
-                {{segData!.salescharge}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_salesCharge" [value]="segData!.salescharge">
+            </div>
+            <!-- <div class="col">
+              <label for="date">Investment Percentage:</label>
+              <input currencyMask class="form-control" formControlName="segfunds_comissionPercent"
+              [options]="{prefix: '', allowNegative: false, allowZero: true, precision: 2, suffix: '%', max:100 }" 
+              [value]="segData!.commissionPercent"
+               >
+            </div> -->
+            <div class="col">
+              <label for="date">Maturity Date Guarantee:</label>
+              <input type="text" class="form-control" formControlName="segfunds_maturityDate" [value]="segData!.maturity">
             </div>
             <div class="col">
-              <label for="date">Investment Percentage:</label>
-              <p>
-                {{segData!.commissionPercent}}
-              </p>
+              <label for="date">Death Benefit Guarantee:</label>
+              <input type="text" class="form-control" formControlName="segfunds_deathBenefit" [value]="segData!.deathPercentage">
             </div>
           </div>
           <div class="row">
             <div class="col">
               <label for="date">Time Horizon:</label>
-              <p>
-                {{segData!.selectedTimeHorizon}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_timeHorizon" [value]="segData!.selectedTimeHorizon">
             </div>
             <div class="col">
               <label for="date">Investment Amount:</label>
-              <p>
-                {{segData!.selectedTimeHorizon}}
-              </p>
+              <input currencyMask class="form-control" placeholder="Enter Amount"  [options]="{ prefix: '$ ', thousands: ',', decimal: '.' }" class="form-control" formControlName="segfunds_investmentAmount" [value]="segData!.amount">
             </div>
             <div class="col">
               <label for="date">Risk Tolerance:</label>
-              <p>
-                {{segData!.risktoleranceSelect}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_riskTolerance" [value]="segData!.risktoleranceSelect">
             </div>
             <div class="col">
               <label for="date">Investment Purpose:</label>
-              <p>
-                {{segData!.investmentPurposeSelect}}
-              </p>
+              <input type="text" class="form-control" formControlName="segfunds_investmentPurpose" [value]="segData!.investmentPurpose">
             </div>
             <hr>
           </div>
         </div>
-        <p style="font-size: larger;">How would you like to divide up your investment?</p>
+        <p style="font-size: larger; padding-top: 10px;">How would you like to divide up your investment?</p>
         <!-- Update formArrayName to match the name used in your component -->
-        <div formArrayName="investmentBreakdown">
+        <div formArrayName="segfunds_investmentbreakDown">
           <div *ngFor="let data of SendInvestmentBreakdownData(); let i = index">
             <div class="row investmentFieldGroup" [formGroupName]="i" style="padding-top: 15px;">
               <div class="col">
@@ -89,7 +80,7 @@
                 </select>
               </div>
               <div class="col">
-                <input class="form-control" formControlName="investmentPercentfield">
+                <input type="text" class="form-control" formControlName="investmentPercentfield" >
               </div>
               <div class="col">
                 <button  type="button" mat-raised-button color="warn" (click)="deleteItem(i)">Remove</button>
@@ -98,13 +89,17 @@
           </div>
         </div>
         <div class="addButton">
-          <button  type="button" mat-raised-button color="primary" (click)="additem()">Add</button>
+          <button type="button" mat-raised-button color="primary"  (click)="additem()">Add</button>
         </div>
+
         <hr>
         <div class="row">
           <div class="example-button-row" role="group" aria-label="Basic example">
+            <label>
+              <input type="checkbox" ng-model="isAgreed" name="isAgreed"> I agree to the terms and conditions
+            </label>
             <button mat-raised-button color="warn" class="back-button">Back</button>
-            <button mat-raised-button color="warn">Submit</button>
+            <button mat-raised-button color="warn" [disabled]="FormData" class="submit-button">Submit</button>
           </div>
         </div>
       </form>

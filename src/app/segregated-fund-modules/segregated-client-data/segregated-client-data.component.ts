@@ -17,14 +17,17 @@ export class SegregatedClientDataComponent implements OnInit {
   dialogRef: any;
   closebutton: any;
   currentDate!: any;
-segfunds_clientName: any;
-
+  segfunds_clientName: any;
+  segfunds_advisor: any;
+  segfunds_investmentbreakDown: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private datePipe: DatePipe) {}
 
   ngOnInit() {
     this.getCurrentDate();
   }
+
+  
   getCurrentDate() {
     const today = new Date();
     this.currentDate = this.datePipe.transform(today, 'MMMM d, y');

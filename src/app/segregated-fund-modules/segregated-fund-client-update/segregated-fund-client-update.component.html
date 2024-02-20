@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="ClientEdit-header">
+    <h1>Edit Segregated Fund Summary</h1>
+  </div>
+  <form [formGroup]="editForm">
+    <div class="row">
+      <div class="col">
+        <label>Created Date:</label>
+        <input type="text" class="form-control" formControlName="createdDate" [readonly]="!isEditing"
+          (click)="toggleEdit()" />
+      </div>
+      <div class="col">
+        <label>Client Name:</label>
+        <input type="text" class="form-control" formControlName="clientName" [readonly]="!isEditing"
+          (click)="toggleEdit()" />
+      </div>
+      <div class="col">
+        <label>Advisor:</label>
+        <input type="text" class="form-control" formControlName="advisor" [readonly]="!isEditing"
+          (click)="toggleEdit()" />
+      </div>
+      <div class="col">
+        <label>Carrier:</label>
+        <input type="text" class="form-control" formControlName="carrier" [readonly]="!isEditing"
+          (click)="toggleEdit()" />
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Commission Percent:</label>
+          <input type="text" class="form-control" formControlName="commissionPrecent" [readonly]="!isEditing"
+            (click)="toggleEdit()" />
+        </div>
+        <div class="col">
+          <label>investment BreakDown:</label>
+          <div formArrayName="investmentBreakDown">
+            <div *ngFor="let item of investmentBreakDown.controls; let i=index" [formGroupName]="i">
+              <label>Investment Option:</label>
+              <input type="text" class="form-control" formControlName="investmentOptionfield" [readonly]="!isEditing" (click)="toggleEdit()" />
+              <label>Investment Percent:</label>
+              <input type="text" class="form-control" formControlName="investmentPercentfield" [readonly]="!isEditing" (click)="toggleEdit()" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

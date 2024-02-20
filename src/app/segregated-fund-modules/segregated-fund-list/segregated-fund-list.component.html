@@ -16,10 +16,26 @@
             <th mat-header-cell *matHeaderCellDef> Created Date </th>
             <td mat-cell *matCellDef="let element"> {{element.segfunds_createdDate}} </td>
         </ng-container>
+        <ng-container matColumnDef="segfunds_investmentbreakDown">
+            <th mat-header-cell *matHeaderCellDef> Investment Breakdown </th>
+            <td mat-cell *matCellDef="let element">
+              <div *ngIf="element.segfunds_investmentbreakDown && element.segfunds_investmentbreakDown.length > 0">
+                <ul>
+                  <li *ngFor="let item of element.segfunds_investmentbreakDown">
+                    {{ item.investmentOptionfield }},  {{ item.investmentPercentfield }}%
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </ng-container>         
         <ng-container matColumnDef="segFunds_id">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element" >
-                <button mat-raised-button color="primary" (click)="GetSegClientData(element.segFunds_id)">View</button>
+              <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Menu</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="GetSegregatedFundResults(element.id)">View</button>
+                <button mat-menu-item (click)="GetSegClientToExportData(element.id)">Export</button>
+              </mat-menu>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
